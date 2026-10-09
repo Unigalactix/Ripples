@@ -33,8 +33,11 @@ test("approved book sequence, names and stand-alone divider pages", async () => 
   for (const id of ["title", "dedication", "waters-edge", "ripples-begin"]) {
     assert.equal(english.pages.filter(page => page.sectionId === id).length, 1);
   }
-  assert.equal(english.book.dedication.status, "pending");
-  assert.deepEqual(english.book.dedication.paragraphs, []);
+  assert.equal(english.book.dedication.status, "draft");
+  assert.deepEqual(english.book.dedication.paragraphs, [
+    "To every pebble I have faced in my life and every ripple I have managed. To the still water that follows every ripple, and to the pebbles that will create ripples in the days to come.",
+    "This book is dedicated to you all.",
+  ]);
 });
 
 test("all seven story sections contain substantial first-draft prose without pagination loss", async () => {
@@ -86,9 +89,21 @@ test("static artifact has a root index with working relative assets and usable c
   assert.equal(JSON.stringify(context.RIPPLES_CONTENT), JSON.stringify(story));
   assert.ok(html.includes('<dialog id="book"'));
   assert.ok(html.includes('href="./Assets/favicon.svg"'));
-  for (const asset of ["cover.svg", "favicon.svg", path.join("books", "ripples-en.html"), path.join("books", "ripples-en.epub")]) {
+  for (const asset of ["cover.svg", "favicon.svg", "water-surface.svg", "aarna-study.svg", "mukund-study.svg", path.join("books", "ripples-en.html"), path.join("books", "ripples-en.epub")]) {
     assert.ok((await readFile(path.join(root, "Assets", asset), "utf8")).length);
   }
+});
+
+test("landing navigation targets exist and every new label is localized", async () => {
+  const html = await readFile(new URL("../../index.html", import.meta.url), "utf8");
+  const story = await loadStory(storyRoot);
+  for (const [, label] of html.matchAll(/data-(?:aria-)?label="([^"]+)"/g)) {
+    for (const locale of story) assert.equal(typeof locale.labels[label], "string", `${locale.code}: ${label}`);
+  }
+  const nav = html.match(/<nav class="site-nav"[\s\S]*?<\/nav>/)[0];
+  const links = [...nav.matchAll(/href="#([^"]+)"/g)].map(match => match[1]);
+  assert.deepEqual(links, ["premise", "people", "chapters", "edition"]);
+  for (const id of links) assert.ok(html.includes(`id="${id}"`));
 });
 
 test("character profiles preserve approved ages, both perspectives and B(L)IND origin", async () => {
@@ -98,9 +113,58 @@ test("character profiles preserve approved ages, both perspectives and B(L)IND o
   assert.deepEqual(locale.characters.profiles.map(profile => [profile.id, profile.age]), [["aarna", 28], ["mukund", 27]]);
   for (const profile of locale.characters.profiles) {
     assert.ok(profile.sections.length >= 5);
+    assert.equal(typeof profile.gesture, "string");
+    assert.ok(profile.sections.some(section => section.spoiler));
+    assert.ok(profile.sections.some(section => !section.spoiler));
     assert.ok(profile.sections.some(section => section.paragraphs.some(text => text.includes("B(L)IND"))));
   }
   assert.ok(locale.opening[0].manuscript.some(block => block.paragraphs.some(text => text.includes("B(L)IND"))));
+});
+
+test("revision connects painting, misunderstanding and commitment without losing the quiet ending", async () => {
+  const [locale] = await loadStory(storyRoot);
+  const prose = chapter => chapter.manuscript.flatMap(block => block.paragraphs).join("\n");
+  for (const chapter of [locale.opening[0], locale.opening[1], locale.chapters[0], locale.chapters[1], locale.chapters[3]]) {
+    assert.ok(prose(chapter).includes("Room Enough"));
+  }
+  assert.ok(prose(locale.opening[0]).includes("old film song"));
+  assert.ok(prose(locale.opening[0]).includes("three answers"));
+  assert.ok(prose(locale.chapters[2]).includes("Maybe I'm not the person you need"));
+  const ending = prose(locale.chapters[4]);
+  assert.ok(!ending.includes("choosing you while we learn"));
+  assert.ok(ending.includes("Will you talk to me about it when I'm not crying?"));
+  assert.ok(ending.includes("And come back."));
+  assert.ok(ending.includes("moved his bag from beside the door to the sofa"));
+  assert.ok(ending.includes("her hair caught under his collar"));
+  assert.ok(ending.includes("hammer was still on the windowsill"));
+  assert.ok(ending.endsWith("He left it on."));
+});
+
+test("Chicago and the supplied family histories remain correctly assigned", async () => {
+  const [locale] = await loadStory(storyRoot);
+  const profileText = id => locale.characters.profiles.find(profile => profile.id === id)
+    .sections.flatMap(section => section.paragraphs).join("\n");
+  const aarna = profileText("aarna");
+  const mukund = profileText("mukund");
+  for (const text of [aarna, mukund]) {
+    assert.ok(text.includes("India"));
+    assert.ok(text.includes("Chicago"));
+    assert.ok(text.includes("previous relationships"));
+  }
+  assert.ok(aarna.includes("parents live in New Jersey"));
+  assert.ok(aarna.includes("shop selling musical instruments"));
+  assert.ok(aarna.includes("college in New York state"));
+  assert.ok(mukund.includes("graduating from college in California"));
+  assert.ok(mukund.includes("mother and elder brother live in San Jose"));
+  assert.ok(mukund.includes("brother is a software engineer"));
+  assert.ok(mukund.includes("mother makes podcasts"));
+  assert.ok(mukund.includes("Indian celebrities"));
+  const opening = locale.opening[0].manuscript.flatMap(block => block.paragraphs).join("\n");
+  for (const fact of ["Chicago", "India", "New Jersey", "New York state", "California", "San Jose", "software engineer", "podcast"]) {
+    assert.ok(opening.includes(fact), `Opening must integrate ${fact}, not just profiles.`);
+  }
+  assert.ok(opening.includes("left them in the past"));
+  assert.ok(!opening.includes("California State University"));
 });
 
 test("cover uses the author's subtitle as its only visible author credit", async () => {

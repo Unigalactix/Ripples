@@ -10,6 +10,12 @@ const routes = new Map([
   ["/Ripples/UI/content.js", ["UI/content.js", "text/javascript; charset=utf-8"]],
   ["/Ripples/Assets/cover.svg", ["Assets/cover.svg", "image/svg+xml"]],
   ["/Ripples/Assets/favicon.svg", ["Assets/favicon.svg", "image/svg+xml"]],
+  ["/Ripples/Assets/water-surface.svg", ["Assets/water-surface.svg", "image/svg+xml"]],
+  ["/Ripples/Assets/aarna-study.svg", ["Assets/aarna-study.svg", "image/svg+xml"]],
+  ["/Ripples/Assets/mukund-study.svg", ["Assets/mukund-study.svg", "image/svg+xml"]],
+  ["/Ripples/Assets/fonts/cormorant-garamond-latin-400-normal.woff", ["Assets/fonts/cormorant-garamond-latin-400-normal.woff", "font/woff"]],
+  ["/Ripples/Assets/fonts/cormorant-garamond-latin-400-italic.woff", ["Assets/fonts/cormorant-garamond-latin-400-italic.woff", "font/woff"]],
+  ["/Ripples/Assets/fonts/OFL.txt", ["Assets/fonts/OFL.txt", "text/plain; charset=utf-8"]],
 ]);
 
 const server = createServer(async (request, response) => {

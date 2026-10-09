@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { renderBookEdition } from "./export-book.mjs";
 import { renderEpub } from "./export-epub.mjs";
+import { loadBookFonts } from "./book-fonts.mjs";
 
 const uiRoot = fileURLToPath(new URL("..", import.meta.url));
 const chapterIds = ["impact", "first-ripple", "crest", "trough", "still-water"];
@@ -19,6 +20,12 @@ const labelKeys = [
   "downloadBook", "printBook", "downloadCover", "downloadHint", "cover", "exportError",
   "downloadEpub", "profiles", "fullProfile", "closeProfile", "profileNote", "howTheyMet",
   "age", "occupation", "edgePrevious", "edgeNext",
+  "siteNav", "navStory", "navPeople", "navWaves", "navBook", "heroEyebrow",
+  "heroThought", "heroDescription", "waterCaption", "measureDay", "measurePeople",
+  "measureWaves", "premiseDeck", "aarnaNeed", "mukundNeed", "peopleDeck",
+  "aarnaArt", "mukundArt", "originTitle", "editionDeck",
+  "continueReading", "startAgain", "readingSettings", "keepBook", "readerTheme",
+  "paperTheme", "nightTheme", "textSize", "memoryHint", "memoryError", "memoryMoved", "spoilerJourney",
 ];
 
 function requireText(value, location) {
@@ -178,12 +185,13 @@ export async function loadStory(storyRoot) {
           || profile.age !== [28, 27][index]) {
         throw new Error(`${locale.code}.characters profile ID or age does not match the story.`);
       }
-      for (const key of ["name", "occupation", "tagline"]) requireText(profile[key], `characters.${profile.id}.${key}`);
+      for (const key of ["name", "occupation", "tagline", "gesture"]) requireText(profile[key], `characters.${profile.id}.${key}`);
       requireParagraphs(profile.traits, `characters.${profile.id}.traits`);
       if (!Array.isArray(profile.sections) || profile.sections.length === 0) {
         throw new Error(`characters.${profile.id}.sections must contain profile details.`);
       }
       for (const section of profile.sections) {
+        if (typeof section?.spoiler !== "boolean") throw new Error(`characters.${profile.id}.section.spoiler must be boolean.`);
         requireText(section?.title, `characters.${profile.id}.section.title`);
         requireParagraphs(section.paragraphs, `characters.${profile.id}.section.paragraphs`);
       }
@@ -203,18 +211,26 @@ export async function build({
   const assetsRoot = path.resolve(uiRoot, "..", "Assets");
   const coverSvg = await readFile(path.join(assetsRoot, "cover.svg"), "utf8");
   const faviconSvg = await readFile(path.join(assetsRoot, "favicon.svg"), "utf8");
+  const fonts = await loadBookFonts();
   await mkdir(path.join(outputRoot, "UI", "src"), { recursive: true });
   await mkdir(path.join(outputRoot, "Assets", "books"), { recursive: true });
-  for (const asset of ["cover.svg", "favicon.svg"]) {
+  for (const asset of ["cover.svg", "favicon.svg", "water-surface.svg", "aarna-study.svg", "mukund-study.svg"]) {
     await copyFile(path.join(assetsRoot, asset), path.join(outputRoot, "Assets", asset));
   }
   if (writeRootContent) await mkdir(path.join(assetsRoot, "books"), { recursive: true });
+  const fontDestinations = [path.join(outputRoot, "Assets", "fonts")];
+  if (writeRootContent) fontDestinations.push(path.join(assetsRoot, "fonts"));
+  for (const folder of fontDestinations) {
+    await mkdir(folder, { recursive: true });
+    for (const face of fonts.faces) await writeFile(path.join(folder, face.name), face.bytes);
+    await writeFile(path.join(folder, "OFL.txt"), fonts.license, "utf8");
+  }
   for (const locale of story) {
-    const edition = renderBookEdition(locale, coverSvg, faviconSvg);
+    const edition = renderBookEdition(locale, coverSvg, faviconSvg, fonts);
     const name = `ripples-${locale.code}.html`;
     await writeFile(path.join(outputRoot, "Assets", "books", name), edition, "utf8");
     if (writeRootContent) await writeFile(path.join(assetsRoot, "books", name), edition, "utf8");
-    const epub = renderEpub(locale, coverSvg);
+    const epub = renderEpub(locale, coverSvg, fonts);
     const epubName = `ripples-${locale.code}.epub`;
     await writeFile(path.join(outputRoot, "Assets", "books", epubName), epub);
     if (writeRootContent) await writeFile(path.join(assetsRoot, "books", epubName), epub);

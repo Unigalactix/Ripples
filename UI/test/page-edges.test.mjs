@@ -55,3 +55,28 @@ test("edge navigation respects book boundaries and RTL direction", () => {
   rtl.buttons[1].click();
   assert.equal(rtl.location.hash, "en/before/1");
 });
+
+test("landing links are not interpreted as book routes", () => {
+  let closeCount = 0;
+  const error = {};
+  const context = vm.createContext({
+    document: {
+      getElementById: () => error,
+      body: { classList: { remove() {} } },
+    },
+    window: { matchMedia: () => ({ matches: false }) },
+    location: { hash: "" },
+  });
+  vm.runInContext(source, context);
+  error.open = true;
+  error.close = () => { closeCount++; };
+  context.localeData = { title: "Ripples", book: { subtitle: "Test" } };
+  vm.runInContext("locale = localeData;", context);
+  error.hidden = true;
+  for (const anchor of ["", "story", "premise", "people", "chapters", "edition"]) {
+    context.location.hash = `#${anchor}`;
+    vm.runInContext("readLocation();", context);
+    assert.equal(error.hidden, true);
+  }
+  assert.equal(closeCount, 6);
+});

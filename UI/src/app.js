@@ -2,6 +2,7 @@ const content = globalThis.RIPPLES_CONTENT;
 const byId = id => document.getElementById(id);
 const dialog = byId("book");
 const profilesDialog = byId("profiles");
+const landingAnchors = new Set(["", "story", "people", "premise", "chapters", "edition"]);
 let locale;
 let pageIndex = 0;
 let textSize = 18;
@@ -12,6 +13,113 @@ let waterPaused = false;
 let waterVisible = true;
 let rippleCount = 0;
 let profileOpener;
+const readingMemoryKey = "ripples.reading.v1";
+let savedReading = null;
+let readerTheme = "paper";
+let memoryDisabled = false;
+let hasRead = false;
+let pendingResume;
+let saveTimer;
+
+function decodeReadingState(raw) {
+  if (raw === null) return null;
+  const value = JSON.parse(raw);
+  const position = value?.position;
+  if (value?.version !== 1 || typeof value.language !== "string" || value.language.length > 30
+      || !Number.isInteger(value.textSize) || value.textSize < 16 || value.textSize > 24
+      || !["paper", "night"].includes(value.theme)
+      || (position !== null && (!position || typeof position.sectionId !== "string" || !/^[a-z][a-z-]*$/.test(position.sectionId)
+        || !Number.isInteger(position.index) || position.index < 0 || position.index > 1000000
+        || (position.text !== null && (typeof position.text !== "string" || position.text.length > 100000))))) {
+    throw new TypeError("Invalid Ripples reading memory.");
+  }
+  return value;
+}
+
+function makeReadingState(edition, index, offset, size, theme) {
+  const page = edition.pages[index];
+  const paragraphs = page.blocks.flatMap(block => block.paragraphs);
+  const withinPage = Math.max(0, Math.min(offset, paragraphs.length - 1));
+  const before = edition.pages.slice(0, index).filter(item => item.sectionId === page.sectionId)
+    .reduce((count, item) => count + item.blocks.reduce((sum, block) => sum + block.paragraphs.length, 0), 0);
+  return {
+    version: 1, language: edition.code, textSize: size, theme,
+    position: { sectionId: page.sectionId, index: before + withinPage, text: paragraphs[withinPage] ?? null },
+  };
+}
+
+function resolveReadingState(editions, state) {
+  const edition = editions.find(item => item.code === state.language) ?? editions[0];
+  const sectionPages = edition.pages.map((page, index) => ({ page, index }))
+    .filter(item => item.page.sectionId === state.position.sectionId);
+  if (!sectionPages.length) return { edition, index: 0, offset: 0, moved: true };
+  const records = sectionPages.flatMap(({ page, index }) =>
+    page.blocks.flatMap(block => block.paragraphs).map((text, offset) => ({ text, index, offset })));
+  const first = { edition, index: sectionPages[0].index, offset: 0, moved: edition.code !== state.language };
+  if (!records.length || state.position.text === null) return first;
+  // Match the passage, not its old page number; use proximity for repeated dialogue.
+  const matches = records.map((record, index) => ({ ...record, distance: Math.abs(index - state.position.index) }))
+    .filter(record => record.text === state.position.text).sort((a, b) => a.distance - b.distance);
+  const record = matches[0] ?? records[Math.min(state.position.index, records.length - 1)];
+  return { edition, index: record.index, offset: record.offset, moved: first.moved || matches.length === 0 };
+}
+
+function memoryNotice(key, error) {
+  if (error) console.warn("Ripples reading memory:", error);
+  for (const id of ["memory-notice", "reader-memory-notice"]) {
+    const notice = byId(id);
+    notice.dataset.memoryLabel = key;
+    notice.textContent = locale.labels[key];
+    notice.hidden = false;
+  }
+}
+
+function updateResumeButtons() {
+  const resumable = Boolean(savedReading?.position);
+  document.querySelectorAll('[data-open="title"]:not(.cover-preview)').forEach(button => {
+    button.textContent = locale.labels[resumable ? "continueReading" : "read"];
+  });
+  document.querySelectorAll("[data-start-again]").forEach(button => { button.hidden = !resumable; });
+}
+
+function applyReaderPreferences() {
+  dialog.dataset.theme = readerTheme;
+  dialog.style.setProperty("--reading-size", `${textSize}px`);
+  byId("reader-theme").value = readerTheme;
+  byId("smaller").disabled = textSize === 16;
+  byId("larger").disabled = textSize === 24;
+}
+
+function saveReading(offset = 0) {
+  if (!hasRead) return;
+  savedReading = makeReadingState(locale, pageIndex, offset, textSize, readerTheme);
+  if (!memoryDisabled) {
+    try {
+      localStorage.setItem(readingMemoryKey, JSON.stringify(savedReading));
+    } catch (error) {
+      memoryDisabled = true;
+      memoryNotice("memoryError", error);
+    }
+  }
+  updateResumeButtons();
+}
+
+function visibleParagraphOffset() {
+  const top = dialog.getBoundingClientRect().top + 16;
+  const paragraphs = [...byId("book-page").querySelectorAll(".passage p")];
+  const offset = paragraphs.findIndex(paragraph => paragraph.getBoundingClientRect().bottom > top);
+  return Math.max(0, offset);
+}
+
+function resumeReading() {
+  const target = resolveReadingState(content, savedReading);
+  if (target.moved) memoryNotice("memoryMoved");
+  opener = document.activeElement;
+  pendingResume = target;
+  const route = `#${pageRoute(target.edition.pages[target.index], target.edition.code)}`;
+  if (location.hash === route) readLocation();
+  else location.hash = route;
+}
 
 function updateWaterMotion() {
   const paused = waterPaused || reducedMotion.matches;
@@ -132,12 +240,15 @@ function renderProfile(id) {
   container.replaceChildren(
     name, element("p", profile.tagline, "profile-tagline"), facts, traits,
   );
+  const spoilers = element("details", undefined, "profile-spoilers");
+  spoilers.append(element("summary", locale.labels.spoilerJourney));
   for (const detail of profile.sections) {
     const section = element("section");
     section.append(element("h3", detail.title));
     detail.paragraphs.forEach(text => section.append(element("p", text)));
-    container.append(section);
+    (detail.spoiler ? spoilers : container).append(section);
   }
+  if (profile.sections.some(detail => detail.spoiler)) container.append(spoilers);
   document.querySelectorAll("[data-profile-choice]").forEach(button => {
     button.setAttribute("aria-pressed", String(button.dataset.profileChoice === id));
   });
@@ -184,11 +295,13 @@ function openSection(id) {
 function openReader(direction = 0) {
   if (!dialog.open) dialog.showModal();
   document.body.classList.add("reading");
+  hasRead = true;
   updateWaterMotion();
   renderPage(direction);
 }
 
 function renderPage(direction = 0) {
+  clearTimeout(saveTimer);
   const page = locale.pages[pageIndex];
   const paper = byId("book-page");
   const number = new Intl.NumberFormat(locale.code);
@@ -250,11 +363,27 @@ function renderPage(direction = 0) {
   document.title = `${locale.title} - ${page.title}`;
   paper.focus({ preventScroll: true });
   dialog.scrollTop = 0;
+  saveReading();
+  if (pendingResume) {
+    const target = pendingResume;
+    pendingResume = undefined;
+    if (target.edition === locale && target.index === pageIndex) {
+      requestAnimationFrame(() => {
+        if (!dialog.open || target.edition !== locale || target.index !== pageIndex) return;
+        const paragraph = paper.querySelectorAll(".passage p")[target.offset];
+        if (paragraph && target.offset > 0) paragraph.scrollIntoView({ block: "start" });
+        saveReading(target.offset);
+      });
+    }
+  }
 }
 
 function renderLocale() {
   document.documentElement.lang = locale.code;
   document.documentElement.dir = locale.dir;
+  document.querySelectorAll("[data-memory-label]").forEach(notice => {
+    notice.textContent = locale.labels[notice.dataset.memoryLabel];
+  });
   document.querySelectorAll("[data-label]").forEach(node => {
     node.textContent = locale.labels[node.dataset.label];
   });
@@ -278,6 +407,13 @@ function renderLocale() {
   document.querySelectorAll(".profile-link").forEach(button => {
     button.setAttribute("aria-label", `${locale.labels.fullProfile}: ${locale.labels[button.dataset.profile]}`);
   });
+  document.querySelectorAll("[data-traits]").forEach(list => {
+    const profile = locale.characters.profiles.find(item => item.id === list.dataset.traits);
+    list.replaceChildren(...profile.traits.map(trait => element("li", trait)));
+  });
+  document.querySelectorAll("[data-gesture]").forEach(node => {
+    node.textContent = locale.characters.profiles.find(profile => profile.id === node.dataset.gesture).gesture;
+  });
   document.querySelectorAll(".cover-preview").forEach(cover => { cover.hidden = locale.code !== "en"; });
   byId("contents").replaceChildren(...sections().map(page => {
     const option = element("option", sectionName(page));
@@ -296,6 +432,7 @@ function renderLocale() {
     button.append(
       element("span", new Intl.NumberFormat(locale.code, { minimumIntegerDigits: 2 }).format(index + 1), "wave-number"),
       element("span", chapter.title, "wave-title"),
+      element("span", chapter.scene, "wave-scene"),
       element("span", locale.labels[chapter.status], "wave-status"),
     );
     button.addEventListener("click", () => openSection(chapter.id));
@@ -303,18 +440,22 @@ function renderLocale() {
     return item;
   }));
   updateWaterMotion();
+  updateResumeButtons();
 }
 
 function closeReader() {
   cancelPageTurn();
-  if (dialog.open) dialog.close();
+  if (dialog.open) {
+    if (hasRead) saveReading(visibleParagraphOffset());
+    dialog.close();
+  }
   document.body.classList.remove("reading");
   document.title = `${locale.title} - ${locale.book.subtitle}`;
 }
 
 function readLocation() {
   const route = location.hash.slice(1);
-  if (!route || ["story", "people"].includes(route)) {
+  if (landingAnchors.has(route)) {
     closeReader();
     return;
   }
@@ -344,6 +485,24 @@ if (!Array.isArray(content) || !content[0]?.pages?.length) {
   showError("The manuscript could not be loaded. Rebuild the site or reload the page.");
 } else {
   locale = content[0];
+  try {
+    savedReading = decodeReadingState(localStorage.getItem(readingMemoryKey));
+    if (savedReading) {
+      textSize = savedReading.textSize;
+      readerTheme = savedReading.theme;
+      locale = content.find(item => item.code === savedReading.language) ?? content[0];
+      if (savedReading.position) {
+        const target = resolveReadingState(content, savedReading);
+        if (target.moved) memoryNotice("memoryMoved");
+        if (location.hash === `#${pageRoute(target.edition.pages[target.index], target.edition.code)}`) pendingResume = target;
+      }
+    }
+  } catch (error) {
+    memoryDisabled = true;
+    savedReading = null;
+    memoryNotice("memoryError", error);
+  }
+  applyReaderPreferences();
   byId("language").replaceChildren(...content.map(item => {
     const option = element("option", item.name);
     option.value = item.code;
@@ -353,7 +512,28 @@ if (!Array.isArray(content) || !content[0]?.pages?.length) {
   byId("language").disabled = content.length === 1;
   document.querySelectorAll("[data-open]").forEach(button => {
     button.disabled = false;
-    button.addEventListener("click", () => openSection(button.dataset.open));
+    button.addEventListener("click", () => {
+      if (button.dataset.open === "title" && !button.classList.contains("cover-preview") && savedReading?.position) resumeReading();
+      else openSection(button.dataset.open);
+    });
+  });
+  document.querySelectorAll("[data-start-again]").forEach(button => {
+    button.addEventListener("click", () => { pendingResume = undefined; openSection("title"); });
+  });
+  byId("reader-theme").addEventListener("change", event => {
+    cancelPageTurn();
+    readerTheme = event.target.value;
+    applyReaderPreferences();
+    saveReading(visibleParagraphOffset());
+  });
+  for (const id of ["reading-settings", "keep-book"]) {
+    byId(id).addEventListener("toggle", () => {
+      if (byId(id).open) byId(id === "reading-settings" ? "keep-book" : "reading-settings").open = false;
+    });
+  }
+  dialog.addEventListener("scroll", () => {
+    clearTimeout(saveTimer);
+    if (dialog.open) saveTimer = setTimeout(() => saveReading(visibleParagraphOffset()), 150);
   });
   document.querySelectorAll("[data-profile]").forEach(button => {
     button.disabled = false;
@@ -378,12 +558,17 @@ if (!Array.isArray(content) || !content[0]?.pages?.length) {
   });
   byId("previous").addEventListener("click", () => navigate(pageIndex - 1));
   byId("next").addEventListener("click", () => navigate(pageIndex + 1));
-  byId("close-book").addEventListener("click", () => dialog.close());
+  byId("close-book").addEventListener("click", () => {
+    saveReading(visibleParagraphOffset());
+    dialog.close();
+  });
+  dialog.addEventListener("cancel", () => saveReading(visibleParagraphOffset()));
   dialog.addEventListener("close", () => {
+    clearTimeout(saveTimer);
     cancelPageTurn();
     document.body.classList.remove("reading");
     updateWaterMotion();
-    if (!["", "#story", "#people"].includes(location.hash)) {
+    if (!landingAnchors.has(location.hash.slice(1))) {
       history.replaceState(null, "", location.pathname + location.search);
     }
     document.title = `${locale.title} - ${locale.book.subtitle}`;
@@ -405,13 +590,15 @@ if (!Array.isArray(content) || !content[0]?.pages?.length) {
     byId(id).addEventListener("click", () => {
       cancelPageTurn();
       textSize = Math.max(16, Math.min(24, textSize + delta));
-      dialog.style.setProperty("--reading-size", `${textSize}px`);
-      byId("smaller").disabled = textSize === 16;
-      byId("larger").disabled = textSize === 24;
+      applyReaderPreferences();
+      saveReading(visibleParagraphOffset());
     });
   }
   window.addEventListener("hashchange", readLocation);
   window.addEventListener("resize", cancelPageTurn);
+  window.addEventListener("pagehide", () => {
+    if (dialog.open) saveReading(visibleParagraphOffset());
+  });
   reducedMotion.addEventListener("change", () => {
     cancelPageTurn();
     updateWaterMotion();

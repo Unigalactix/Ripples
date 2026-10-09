@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="paper" x2="80%" y2="100%"><stop stop-color="#eef1df"/><stop offset="1" stop-color="#d5e6d7"/></linearGradient>
+    <filter id="paint"><feTurbulence type="fractalNoise" baseFrequency=".013 .07" numOctaves="3" seed="10" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="12"/></filter>
+    <radialGradient id="wash"><stop stop-color="#bd906d" stop-opacity=".35"/><stop offset="1" stop-color="#bd906d" stop-opacity="0"/></radialGradient>
+  </defs>
+  <path fill="url(#paper)" d="M0 0h800v500H0z"/>
+  <ellipse cx="385" cy="240" rx="410" ry="285" fill="url(#wash)"/>
+  <g filter="url(#paint)">
+    <path d="M130 441L269 60 312 155 408 52 341 235 370 316 265 431 252 359 195 485z" fill="#4e9080" opacity=".85"/>
+    <path d="M236 439L339 77 374 179 474 86 421 284 451 317 371 443 340 369 308 488z" fill="#c79b76" opacity=".85"/>
+    <path d="M356 465L451 53 500 171 583 112 530 257 557 344 458 463 434 341 408 449z" fill="#6aafad" opacity=".8"/>
+    <path d="M320 413L407 121 438 182 415 334 387 459z" fill="#e1c698" opacity=".8"/>
+    <path d="M210 370l78-243M323 331l51-172M454 346l47-157" stroke="#f5ecd3" stroke-width="5" opacity=".5"/>
+  </g>
+  <g fill="none" stroke="#245e61" opacity=".3" transform="rotate(-15 420 310)">
+    <ellipse cx="420" cy="310" rx="134" ry="45"/><ellipse cx="420" cy="310" rx="199" ry="70"/><ellipse cx="420" cy="310" rx="276" ry="99"/>
+  </g>
+  <path d="M650 367l-92-143" stroke="#685f4a" stroke-width="8" stroke-linecap="round"/>
+  <path d="M558 224l-9-17" stroke="#abb9ad" stroke-width="10"/>
+  <path d="M549 207c-8-17-15-18-15-35 14 7 19 14 24 28z" fill="#245e61"/>
+</svg>

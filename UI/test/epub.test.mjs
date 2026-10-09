@@ -6,14 +6,16 @@ import { strFromU8, unzipSync } from "fflate";
 import { loadStory } from "../scripts/build.mjs";
 import { renderEpub } from "../scripts/export-epub.mjs";
 import { renderBookSections } from "../scripts/export-book.mjs";
+import { loadBookFonts } from "../scripts/book-fonts.mjs";
 
 const storyRoot = fileURLToPath(new URL("../../STORY/", import.meta.url));
 const cover = await readFile(new URL("../../Assets/cover.svg", import.meta.url), "utf8");
 const modified = "2026-10-09T00:00:00Z";
+const fonts = await loadBookFonts();
 
 test("EPUB starts with uncompressed mimetype and resolves all package resources", async () => {
   const [locale] = await loadStory(storyRoot);
-  const epub = Buffer.from(renderEpub(locale, cover, modified));
+  const epub = Buffer.from(renderEpub(locale, cover, fonts, modified));
   assert.equal(epub.readUInt32LE(0), 0x04034b50);
   assert.equal(epub.readUInt16LE(8), 0, "mimetype compression must be STORE");
   assert.equal(epub.readUInt16LE(28), 0, "mimetype must have no extra field");
@@ -34,11 +36,15 @@ test("EPUB starts with uncompressed mimetype and resolves all package resources"
   }
   assert.ok(opf.includes('<itemref idref="book"'));
   assert.equal(strFromU8(files["EPUB/cover.svg"]), cover);
+  for (const face of fonts.faces) {
+    assert.deepEqual(Buffer.from(files[`EPUB/fonts/${face.name}`]), face.bytes);
+  }
+  assert.equal(strFromU8(files["EPUB/fonts/OFL.txt"]), fonts.license);
 });
 
 test("EPUB includes complete shared manuscript rendering and valid navigation anchors", async () => {
   const [locale] = await loadStory(storyRoot);
-  const files = unzipSync(renderEpub(locale, cover, modified));
+  const files = unzipSync(renderEpub(locale, cover, fonts, modified));
   const book = strFromU8(files["EPUB/book.xhtml"]);
   assert.ok(book.includes(renderBookSections(locale, "cover.svg")));
   assert.ok(book.includes('xmlns="http://www.w3.org/1999/xhtml"'));
@@ -57,7 +63,7 @@ test("EPUB declares language and reading direction for translated editions", asy
   const [locale] = await loadStory(storyRoot);
   locale.code = "ar";
   locale.dir = "rtl";
-  const files = unzipSync(renderEpub(locale, cover, modified));
+  const files = unzipSync(renderEpub(locale, cover, fonts, modified));
   assert.ok(strFromU8(files["EPUB/package.opf"]).includes('page-progression-direction="rtl"'));
   assert.ok(strFromU8(files["EPUB/book.xhtml"]).includes('xml:lang="ar" dir="rtl"'));
   assert.ok(!strFromU8(files["EPUB/book.xhtml"]).includes('src="cover.svg"'));

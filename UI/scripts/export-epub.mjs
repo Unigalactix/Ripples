@@ -1,7 +1,8 @@
 import { strToU8, zipSync } from "fflate";
 import { escapeHtml, renderBookSections } from "./export-book.mjs";
+import { bookFontCss } from "./book-fonts.mjs";
 
-export function renderEpub(locale, coverSvg, modified = new Date().toISOString().replace(/\.\d{3}Z$/, "Z")) {
+export function renderEpub(locale, coverSvg, fonts, modified = new Date().toISOString().replace(/\.\d{3}Z$/, "Z")) {
   const text = escapeHtml;
   const title = `${locale.title} - ${locale.book.subtitle}`;
   const sections = locale.pages.filter(page => page.pageInSection === 1);
@@ -35,6 +36,8 @@ export function renderEpub(locale, coverSvg, modified = new Date().toISOString()
 <item id="book" href="book.xhtml" media-type="application/xhtml+xml" />
 <item id="css" href="style.css" media-type="text/css" />
 <item id="cover-image" href="cover.svg" media-type="image/svg+xml" properties="cover-image" />
+${fonts.faces.map(face => `<item id="font-${face.style}" href="fonts/${face.name}" media-type="font/woff" />`).join("\n")}
+<item id="font-license" href="fonts/OFL.txt" media-type="text/plain" />
 </manifest>
 <spine page-progression-direction="${locale.dir}"><itemref idref="book" /></spine>
 </package>`),
@@ -46,13 +49,19 @@ export function renderEpub(locale, coverSvg, modified = new Date().toISOString()
 </ol></nav>`)),
     "EPUB/book.xhtml": strToU8(document(title, renderBookSections(locale, "cover.svg"))),
     "EPUB/cover.svg": strToU8(coverSvg),
-    "EPUB/style.css": strToU8(`body{font-family:serif;line-height:1.65;margin:5%;color:#27303a;background:#fffaf2}
+    "EPUB/style.css": strToU8(`${bookFontCss(fonts, face => `fonts/${face.name}`)}
+body{font-family:serif;line-height:1.65;margin:5%;color:#27303a;background:#fffaf2}
 h1{font-weight:normal;line-height:1.2}h3,.wave,.status{font-family:sans-serif}
 h3{font-size:.8em;letter-spacing:.08em;margin-top:1.8em}.status{font-size:.75em}
 .aarna h3{color:#96395b}.mukund h3{color:#205d7c}
 .chapter,.divider,.cover-page{break-before:page;page-break-before:always}.cover-page{break-before:auto;page-break-before:auto;text-align:center}
 .cover{max-width:100%;max-height:95vh;object-fit:contain}.divider{text-align:center;padding-top:25%;padding-bottom:25%;min-height:60vh}
-.divider h1{text-transform:uppercase}p{orphans:3;widows:3}h1,h3{break-after:avoid;page-break-after:avoid}a{color:#205d7c}`),
+.divider h1{font-family:"Cormorant Garamond",Palatino,Georgia,serif;font-weight:400;font-size:2.6em;letter-spacing:.015em;line-height:1.2}
+.dedication{padding-top:12%;padding-bottom:12%}.dedication h1{font-size:1.5em;letter-spacing:.08em;margin-bottom:2em}
+.dedication p{font-family:"Cormorant Garamond",Palatino,Georgia,serif;font-style:italic;font-size:1.35em;line-height:1.6}.dedication p:last-child{margin-top:1.5em}
+p{orphans:3;widows:3}h1,h3{break-after:avoid;page-break-after:avoid}a{color:#205d7c}`),
   };
+  for (const face of fonts.faces) files[`EPUB/fonts/${face.name}`] = face.bytes;
+  files["EPUB/fonts/OFL.txt"] = strToU8(fonts.license);
   return zipSync(files, { level: 6 });
 }

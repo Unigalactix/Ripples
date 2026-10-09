@@ -21,7 +21,7 @@ ${paragraphs(block.paragraphs)}</section>`).join("\n");
     : `<h1>${text(locale.title)}</h1><p>${text(locale.book.subtitle)}</p>`;
   return sections.map(page => {
     if (page.type === "title") return `<section id="title" class="cover-page">${cover}</section>`;
-    if (page.type === "dedication") return `<section id="dedication" class="divider"><h1>${text(page.title)}</h1>
+    if (page.type === "dedication") return `<section id="dedication" class="divider dedication"><h1>${text(page.title)}</h1>
 ${paragraphs(locale.book.dedication.status === "pending" ? [locale.labels.dedicationPending] : locale.book.dedication.paragraphs)}</section>`;
     if (page.type === "divider") return `<section id="${page.sectionId}" class="divider"><h1>${text(page.title)}</h1></section>`;
     const chapter = [...locale.opening, ...locale.chapters].find(item => item.id === page.sectionId);
@@ -32,7 +32,7 @@ ${chapterContent(chapter)}</article>`;
   }).join("\n");
 }
 
-export function renderBookEdition(locale, coverSvg, faviconSvg) {
+export function renderBookEdition(locale, coverSvg, faviconSvg, fonts) {
   const text = escapeHtml;
   const title = `${locale.title} - ${locale.book.subtitle}`;
   const sections = locale.pages.filter(page => page.pageInSection === 1);
@@ -46,6 +46,7 @@ export function renderBookEdition(locale, coverSvg, faviconSvg) {
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,${Buffer.from(faviconSvg).toString("base64")}">
 <title>${text(title)}</title>
 <style>
+${bookFontCss(fonts, face => `data:font/woff;base64,${face.bytes.toString("base64")}`)}
 :root{color-scheme:light;font-family:Georgia,"Times New Roman",serif;color:#27303a;background:#e8e4dc;line-height:1.8}
 *{box-sizing:border-box}body{margin:0}.tools{padding:1.5rem;max-width:800px;margin:auto;font-family:system-ui,sans-serif}
 button{font:inherit;min-height:44px;padding:.6rem 1rem;cursor:pointer}a{color:#225a74}
@@ -54,19 +55,24 @@ main{max-width:800px;margin:auto;background:#fffaf2;box-shadow:0 3px 30px #0002}
 .chapter h1{margin-block:.5rem 1rem}.chapter p{margin-block:0 1em}.wave,.status,h3{font-family:system-ui,sans-serif}
 .wave,.status{font-size:.75rem}.status{color:#5e6370}.passage h3{font-size:.75rem;letter-spacing:.12em;margin-block:2rem 1rem}
 .aarna h3{color:#96395b}.mukund h3{color:#205d7c}.divider{min-height:650px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.divider h1{text-transform:uppercase;letter-spacing:.08em}.cover{display:block;width:100%;height:auto}.cover-page{text-align:center}
+.divider h1{font-family:"Cormorant Garamond","Palatino Linotype",Palatino,Georgia,serif;font-size:3.6rem;line-height:1.2;letter-spacing:.015em;max-width:16ch}
+.dedication h1{font-size:1.7rem;letter-spacing:.08em;margin-bottom:2rem}
+.dedication p{font-family:"Cormorant Garamond","Palatino Linotype",Palatino,Georgia,serif;font-style:italic;font-size:1.65rem;line-height:1.6;max-width:30ch;margin:.4em 0}
+.dedication p:last-child{margin-top:1.5em}.cover{display:block;width:100%;height:auto}.cover-page{text-align:center}
+.tools pre{white-space:pre-wrap;font-size:.7rem}
 .chapter+.chapter{border-top:1px solid #ded6cd}
 @page{size:A5;margin:14mm}
 @media print{
 :root{background:white;font-size:11pt}body,main{margin:0;max-width:none;background:white;box-shadow:none}.tools{display:none}
 .chapter,.divider,.cover-page{break-before:page;padding:0}.cover-page{break-before:auto}.cover{height:178mm;width:100%;object-fit:contain}
-.divider{min-height:175mm;break-inside:avoid}.divider h1{font-size:23pt}.chapter h1{font-size:24pt}
+.divider{min-height:175mm;break-inside:avoid}.divider h1{font-size:32pt}.dedication h1{font-size:18pt}.dedication p{font-size:16pt;line-height:1.6}.chapter h1{font-size:24pt}
 h1,h3,.wave,.status{break-after:avoid}p{orphans:3;widows:3}.chapter+.chapter{border:0}
 }
 </style></head>
 <body><header class="tools"><button type="button" onclick="window.print()">${text(locale.labels.printBook)}</button>
 <p>${text(locale.labels.downloadHint)}</p><p>${text(locale.labels.status)}</p>
 <details><summary>${text(locale.labels.contents)}</summary><ol>${contents}</ol></details></header>
-<main>${body}</main></body></html>
+<main>${body}</main><footer class="tools"><details><summary>Cormorant Garamond / SIL Open Font License</summary><pre>${text(fonts.license)}</pre></details></footer></body></html>
 `;
 }
+import { bookFontCss } from "./book-fonts.mjs";

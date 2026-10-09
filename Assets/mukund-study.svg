@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="water" x2="100%" y2="100%"><stop stop-color="#d6eaf0"/><stop offset="1" stop-color="#a3cbd3"/></linearGradient>
+    <linearGradient id="plane" x2="100%" y2="100%"><stop stop-color="#d4e8e9"/><stop offset="1" stop-color="#568b9d"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#427583" stroke-width=".65" opacity=".2"/></pattern>
+  </defs>
+  <path fill="url(#water)" d="M0 0h800v500H0z"/>
+  <path fill="url(#grid)" d="M0 0h800v500H0z"/>
+  <path d="M191 372L380 79 586 372z" fill="url(#plane)"/>
+  <path d="M380 79l54 211-243 82z" fill="#82b1ba"/>
+  <path d="M380 79l206 293-152-82z" fill="#456f86"/>
+  <path d="M191 372l243-82 152 82z" fill="#b7d5dc"/>
+  <g stroke="#f2fcf7" stroke-width="1.5" fill="none" opacity=".7"><path d="M380 79l54 211L191 372h395L380 79"/><path d="M434 290l152 82"/></g>
+  <g fill="none" stroke="#245b71" opacity=".34" transform="rotate(-15 402 356)">
+    <ellipse cx="402" cy="356" rx="129" ry="43"/><ellipse cx="402" cy="356" rx="194" ry="68"/><ellipse cx="402" cy="356" rx="271" ry="97"/>
+  </g>
+  <g stroke="#376778" fill="none" stroke-width="1" opacity=".6">
+    <path d="M133 104v-24h24M610 80h24v24M133 386v24h24M610 410h24v-24"/>
+    <path d="M638 246h34M655 229v34"/>
+  </g>
+</svg>

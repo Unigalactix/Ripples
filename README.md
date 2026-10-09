@@ -6,26 +6,32 @@ A relationship story and a browser-dependency-free literary website with an embe
 book. The experience uses an original water motif, paper pages, contents and page
 navigation, keyboard controls, adjustable type, and translation-ready content.
 
-The landing water has overlapping, expanding ripple trains: coral/rose for
-Aarna and cyan/indigo for Mukund. Click/tap the hero or use **Make a ripple** to
+The water-first theme uses sunlit aqua, pearl, sea-glass green and deep teal,
+with an original illustrated water surface and overlapping, expanding ripples.
+Aarna's character panel uses expressive watercolor/ochre brushwork; Mukund's uses
+measured blue planes and a fine grid. Their actual traits are drawn from the
+profile data rather than reduced to a warm/cold binary. Click/tap the hero or use **Make a ripple** to
 add a disturbance. **Pause water** freezes the decorative motion; operating-system
 reduced-motion preferences show a static surface. Water also pauses while the
 book is open, the hero is offscreen, or the tab is hidden. No sound is played.
-Character cards and manuscript viewpoint headings share those color identities;
+Character cards and manuscript viewpoint headings share those identities;
 the manuscript itself stays on quiet, high-contrast paper.
 
 [JINX](https://unigalactix.github.io/JINX/) informed the immersive entry and
-embedded-reader interaction. No JINX prose, images, code, or audio were copied.
+embedded-reader interaction, along with the new editorial flow: hero, premise,
+characters, wave/chapter map, then reading/downloads. The header links directly
+to these sections. No JINX prose, images, code, or audio were copied.
 
 Both opening sections and all five waves are complete first drafts. The
-dedication is reserved for the author. English is the only available language;
+dedication uses the author's supplied words verbatim. English is the only available language;
 no translations are implied.
 
 ## Run locally
 
-Requires Node.js 22 or later. Run `npm ci` on a fresh checkout; the only build
-dependency is pinned `fflate`, used to package EPUB files. No package code or
-third-party services are required by the deployed browser experience.
+Requires Node.js 22 or later. Run `npm ci` on a fresh checkout. Pinned build
+dependencies provide `fflate` for EPUB packaging and Cormorant Garamond via
+Fontsource for local display fonts. No package runtime or third-party services
+are required by the deployed browser experience.
 
 ```powershell
 Set-Location D:\Personal\Ripples\UI
@@ -61,8 +67,20 @@ See [the story guide](STORY/README.md) for writing and translation conventions.
 ## Reading behavior
 
 - Open the book from the cover or jump directly to a section from the landing page.
+- Returning readers get **Continue reading** and **Start again**. Position,
+  language, type size and Paper/Night water preference are kept only in this
+  browser, not sent to a server or synchronized across devices.
+- Position uses the visible paragraph's text and ordinal inside its section.
+  Repagination and inserted paragraphs preserve the passage when it still exists.
+  Edited/deleted passages move to the nearest remaining position with a notice.
+  Explicit book links take precedence over a different saved position.
+- Storage failures or invalid saved data display a notice and log a warning;
+  reading remains available without persistence. The key is `ripples.reading.v1`.
 - Read title, dedication, opening divider, Before, A Pebble, main divider, then
   the five waves in that order.
+- The dedication uses Cormorant Garamond italic; the two section-divider titles
+  use its upright face, with centered title-case lettering. Fonts are self-hosted
+  and embedded in HTML/EPUB downloads, with the SIL Open Font License retained.
 - Next/Previous and arrow keys turn pages. In RTL languages arrow direction is
   reversed. Arrow keys inside selectors keep their native behavior.
 - Click or tap the left/right edge of the actual paper page for the same
@@ -72,7 +90,9 @@ See [the story guide](STORY/README.md) for writing and translation conventions.
   directions (also mirrored for RTL). Reduced-motion preferences switch pages
   instantly. Rapid navigation cancels the old animation rather than queuing it;
   closing, resizing, or changing type size also clears any in-flight turn.
-- The contents selector jumps between sections; A-/A+ adjusts text from 16-24px.
+- The contents selector stays visible. **Reading settings** contains language,
+  16-24px type controls and **Paper / Night water** appearances; **Keep this book**
+  contains the downloads. Both groups start collapsed.
 - Escape or Close book returns to the landing page. Native dialog behavior
   contains keyboard focus and makes the background inert while reading.
 - `#en/before/2` links to a specific book page. Earlier `#en/impact`-style links
@@ -94,9 +114,33 @@ See [the story guide](STORY/README.md) for writing and translation conventions.
   gold details. The favicon uses the author's requested pebble/stone emoji.
   Both SVGs are local and editable.
 - **Meet them** and the character-card profile buttons open full Aarna/Mukund
-  profiles. Switch between them without leaving the popup; Escape or Close
+  profiles. Emotional interpretation is behind a spoiler-labeled disclosure,
+  closed by default and reset on each profile switch. Switch between them without leaving the popup; Escape or Close
   profiles returns focus to the opener. Profiles include personality, work,
   strengths, difficulties, ways of showing love, and their B(L)IND origin.
+
+## Revised emotional arc
+
+The story now lives in **Chicago**, with Indian-American families in San Jose
+and New Jersey. Mukund studied in California before moving for work; Aarna
+graduated in New York state. His mother's podcast work, his software-engineer
+brother, and her parents' musical-instrument shop enter through ordinary details.
+Their earlier relationships are settled history and do not intrude.
+
+The manuscript develops **Room Enough**, Aarna's widened-doorway painting, and
+her wish not to pack herself away to make space for another person. Mukund's
+patient first-date curiosity and his imperfect singing complicate his practical
+habits; Aarna also handles bookings and money competently. The confrontation
+includes a statement of inadequacy mistaken for an intention to leave.
+
+Their ending puts mutual commitment before a claim of complete understanding:
+choosing to come back, listen, correct themselves, and keep learning rather than
+put the whole relationship on trial with each misunderstanding. It does not
+treat staying as permission to ignore harm. The quiet lamp-and-shoulder ending,
+the original dedication, and the one-day structure remain.
+The latest pass removes the speech spelling out that principle and tightens
+the repeated exchanges. They agree to talk tomorrow, move the bag, and leave
+the lamp on; the narration does not explain those actions afterward.
 
 ## Relationship origin
 
