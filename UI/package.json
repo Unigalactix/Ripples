@@ -10,5 +10,8 @@
     "build": "node scripts/build.mjs",
     "test": "node --test",
     "preview": "node scripts/preview.mjs"
+  },
+  "devDependencies": {
+    "fflate": "0.8.3"
   }
 }

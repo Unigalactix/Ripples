@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ripples - A Rajesh Kodaganti's Unavailability. One day, two perspectives, five waves. Read the evolving manuscript.">
+    <title>Ripples - A Rajesh Kodaganti's Unavailability</title>
+    <link rel="icon" type="image/svg+xml" href="./Assets/favicon.svg">
+    <meta name="theme-color" content="#141b38">
+    <link rel="stylesheet" href="./UI/src/styles.css">
+    <script src="./UI/content.js" defer></script>
+    <script src="./UI/src/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#story" data-label="skip">Skip to story</a>
+    <header class="site-header">
+      <a class="wordmark" href="./" data-book-title>Ripples</a>
+      <span class="edition" data-label="edition">An evolving manuscript</span>
+      <button class="quiet-button" data-open="title" data-label="read" disabled>Open the book</button>
+    </header>
+    <main id="story">
+      <p id="site-error" class="error" role="alert" hidden></p>
+      <noscript>This book needs JavaScript enabled to display its manuscript and reading controls.</noscript>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="water-art" aria-hidden="true">
+          <div class="water-source aarna-water"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="water-source mukund-water"><i></i><i></i><i></i><i></i><i></i></div>
+          <span class="pebble"></span>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow" data-label="credit">A story by Rajesh Kodaganti</p>
+          <h1 id="hero-title" data-book-title>Ripples</h1>
+          <p class="book-subtitle" id="hero-subtitle">A Rajesh Kodaganti's Unavailability</p>
+          <p class="hero-line" data-label="subtitle">One day. Two perspectives. Five waves.</p>
+          <div class="hero-actions">
+            <button class="primary-button" data-open="title" data-label="read" disabled>Open the book</button>
+            <button class="text-link meet-button" data-profile="aarna" data-label="explore" aria-haspopup="dialog" disabled>Meet them</button>
+          </div>
+          <p class="draft-note" data-label="status">A work in progress.</p>
+        </div>
+        <div class="water-controls">
+          <span data-label="waterHint">Two lives. One surface.</span>
+          <button id="make-ripple" class="quiet-button" data-label="makeRipple" disabled>Make a ripple</button>
+          <button id="toggle-water" class="quiet-button" disabled>Pause water</button>
+        </div>
+      </section>
+      <section class="premise section-shell" aria-labelledby="premise-title">
+        <p class="eyebrow" data-label="premiseLabel">The story</p>
+        <h2 id="premise-title" data-label="premiseTitle">To help. To stay.</h2>
+        <p data-label="premise"></p>
+      </section>
+      <section id="people" class="section-shell people" aria-labelledby="people-title">
+        <h2 id="people-title" data-label="characters">Two people. Three years.</h2>
+        <div class="character-grid">
+          <article class="character aarna">
+            <span class="portrait-mark" aria-hidden="true">A</span>
+            <div><p class="eyebrow" data-label="aarnaRole">28 / Painter</p><h3 data-label="aarna">Aarna</h3><p data-label="aarnaDescription"></p>
+              <button class="profile-link" data-profile="aarna" data-label="fullProfile" aria-haspopup="dialog" disabled>View full profile</button>
+            </div>
+          </article>
+          <article class="character mukund">
+            <span class="portrait-mark" aria-hidden="true">M</span>
+            <div><p class="eyebrow" data-label="mukundRole">27 / Medical sales</p><h3 data-label="mukund">Mukund</h3><p data-label="mukundDescription"></p>
+              <button class="profile-link" data-profile="mukund" data-label="fullProfile" aria-haspopup="dialog" disabled>View full profile</button>
+            </div>
+          </article>
+        </div>
+        <div class="dating-origin"><p class="eyebrow" data-label="howTheyMet">How they met</p><h3 class="bind-wordmark">B<span>(L)</span>IND</h3><p id="dating-origin"></p></div>
+      </section>
+      <section class="section-shell structure" aria-labelledby="structure-title">
+        <p class="eyebrow" data-label="structure">The shape of the water</p>
+        <h2 id="structure-title"></h2>
+        <p data-label="openingDescription"></p>
+        <div id="opening-links" class="opening-links"></div>
+        <h2 id="waves-title"></h2>
+        <p data-label="wavesDescription"></p>
+        <ol id="waves" class="wave-map"></ol>
+      </section>
+      <section class="section-shell book-edition" aria-labelledby="edition-title">
+        <button class="cover-preview" data-open="title" data-aria-label="read" aria-label="Open the book" disabled>
+          <img src="./Assets/cover.svg" alt="Ripples - A Rajesh Kodaganti's Unavailability" width="1000" height="1500" loading="lazy">
+        </button>
+        <div>
+          <p class="eyebrow" data-label="reading">Reading edition</p>
+          <h2 id="edition-title" data-book-title>Ripples</h2>
+          <p data-label="status"></p>
+          <div class="edition-links">
+            <a data-download-book download data-label="downloadBook">Download book (HTML)</a>
+            <a data-download-epub download data-label="downloadEpub">Download EPUB</a>
+            <a data-print-book target="_blank" rel="noopener" data-label="printBook">Print / Save PDF</a>
+            <a href="./Assets/cover.svg" download="Ripples-cover.svg" data-label="downloadCover">Download cover</a>
+          </div>
+          <p class="download-hint" data-label="downloadHint"></p>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><span data-book-title>Ripples</span><span data-label="edition">An evolving manuscript</span></footer>
+    <dialog id="book" aria-labelledby="reader-title">
+      <div class="reader-shell">
+        <header class="reader-header">
+          <div><p class="eyebrow" data-label="reading">Reading edition</p><h2 id="reader-title" data-book-title>Ripples</h2></div>
+          <button id="close-book" class="quiet-button" data-label="close">Close book</button>
+        </header>
+        <div class="reader-tools">
+          <div class="tool"><label for="contents" data-label="contents">Contents</label><select id="contents"></select></div>
+          <div class="tool"><label for="language" data-label="language">Language</label><select id="language" disabled></select></div>
+          <div class="font-tools">
+            <button id="smaller" data-aria-label="smaller" aria-label="Smaller text">A−</button>
+            <button id="larger" data-aria-label="larger" aria-label="Larger text">A+</button>
+          </div>
+          <div class="edition-links">
+            <a data-download-book download data-label="downloadBook">Download book (HTML)</a>
+            <a data-download-epub download data-label="downloadEpub">Download EPUB</a>
+            <a data-print-book target="_blank" rel="noopener" data-label="printBook">Print / Save PDF</a>
+          </div>
+        </div>
+        <p id="reader-error" class="error" role="alert" hidden></p>
+        <div class="book-desk">
+          <article id="book-page" class="paper" tabindex="-1" aria-labelledby="page-title"></article>
+        </div>
+        <nav class="page-controls" aria-label="Book pages" id="page-controls">
+          <button id="previous" data-label="previous">Previous page</button>
+          <p id="progress" aria-live="polite" aria-atomic="true"></p>
+          <button id="next" data-label="next">Next page</button>
+        </nav>
+        <p class="reader-hint" data-label="hint">Turn pages with the buttons or left and right arrow keys. Escape closes the book.</p>
+      </div>
+    </dialog>
+    <dialog id="profiles" aria-labelledby="profiles-title">
+      <header class="reader-header">
+        <h2 id="profiles-title" data-label="profiles">Meet Aarna &amp; Mukund</h2>
+        <button id="close-profiles" class="quiet-button" data-label="closeProfile">Close profiles</button>
+      </header>
+      <div class="profile-switcher" role="group" aria-label="Characters">
+        <button data-profile-choice="aarna" data-label="aarna" aria-pressed="true">Aarna</button>
+        <button data-profile-choice="mukund" data-label="mukund" aria-pressed="false">Mukund</button>
+      </div>
+      <article id="profile-content" tabindex="-1" aria-labelledby="profile-name"></article>
+      <p class="profile-note" data-label="profileNote"></p>
+    </dialog>
+  </body>
+</html>

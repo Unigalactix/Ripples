@@ -1,17 +1,82 @@
 {
   "id": "crest",
   "title": "The Crest",
+  "status": "draft",
   "scene": "The argument beneath the argument",
-  "together": [
-    "The day's tension reaches its confrontation. The canceled exhibition brings an older difference into the open: what each person understands emotional support to mean.",
-    "This chapter will connect their present reactions to their histories without settling those still-unwritten backstories in advance."
-  ],
-  "aarna": [
-    "She needs him to understand that the work is personal, not simply something that needs a new buyer.",
-    "At the heart of what she wants to say is a request to be vulnerable beside him, rather than another demand to be strong."
-  ],
-  "mukund": [
-    "He insists that he is trying to help. Finding a next step is the response he knows, but it is not the response she needs now.",
-    "He reaches the difficult admission that being willing to support her does not mean he already knows how to offer that support."
+  "manuscript": [
+    {
+      "perspective": "aarna",
+      "paragraphs": [
+        "\"What happens if I don't?\" she asked.",
+        "\"Don't what?\"",
+        "\"Stay strong.\"",
+        "Mukund looked tired. She knew she looked tired too. It made each of them seem unreasonable to the other before they had finished speaking.",
+        "\"That's not what I meant.\"",
+        "\"Then what did you mean?\"",
+        "\"That this isn't the end.\"",
+        "\"I haven't said it's the end.\"",
+        "\"You're talking as if everything's gone.\"",
+        "She stood too quickly. The glass struck the edge of the table, spilling water over the top invitation. She caught it upright. For a moment they both watched the paper darken.",
+        "Mukund reached for a cloth.",
+        "\"Leave it.\"",
+        "\"It's water.\"",
+        "\"I know what it is.\"",
+        "He set the cloth down beside the glass. Her own voice had startled her. She could have said sorry then, and wanted to, but something else was already rising behind it.",
+        "\"I have spent the whole afternoon trying not to make this too much for you.\"",
+        "\"For me?\"",
+        "\"Trying to explain it properly. Trying to say it in a way you can do something with.\"",
+        "\"I came as soon as you asked.\"",
+        "\"I know. You're here. But I keep feeling like I have to go somewhere else to be upset.\"",
+        "He sat back. She saw that she had hurt him, and for one small, shameful instant was glad that something she had said had finally reached him.",
+        "\"You don't get to tell me I don't care,\" he said.",
+        "\"I didn't say that.\"",
+        "\"You didn't have to.\""
+      ]
+    },
+    {
+      "perspective": "mukund",
+      "paragraphs": [
+        "He had no idea where to put his hands. He folded them, unfolded them, moved the damp invitation away from the dry ones.",
+        "He wanted to explain the drive, the appointment, the calls he had not taken. He wanted to explain that another venue had not been an insult but the only useful thought he had managed to have.",
+        "\"I can't make the gallery change its mind,\" he said.",
+        "\"I'm not asking you to.\"",
+        "\"Then stop looking at me as if I've failed you.\"",
+        "The words made the room smaller.",
+        "Aarna lowered her eyes. He wished she would answer quickly, angrily even. He did not know how to bear the pause.",
+        "\"This isn't a test,\" she said.",
+        "\"It feels like one.\"",
+        "In their first year together he had believed being dependable would be enough. He would arrive when he said he would. He would remember what she needed from the shop. If she called late, he would answer. These were things he could promise without lying.",
+        "The other things had no clear edges. When to speak, when to stop. Whether silence meant stay with me or leave me alone. He was not proud of how often he waited for a practical problem to rescue him from guessing.",
+        "\"When you hurt like this,\" he said, \"I don't know how to be useful.\"",
+        "\"I don't need you to be useful all the time.\"",
+        "He almost asked what she needed him for, then. He heard how it would sound and did not say it.",
+        "Instead he looked at the open laptop. A room hire page had become a dark rectangle. His first impulse was to wake it."
+      ]
+    },
+    {
+      "perspective": "aarna",
+      "paragraphs": [
+        "She sat in the empty chair.",
+        "Now the table was between them, and she could see his cuff properly. The blue mark had survived the entire day.",
+        "\"I wanted you to be sad with me,\" she said.",
+        "\"I am sad.\"",
+        "\"I can't tell.\"",
+        "He let out a breath that was almost a laugh but had no amusement in it. \"I can't tell what counts.\"",
+        "That stopped her.",
+        "She had wanted the right response to prove that he understood. She had not told him what it would look like, because having to tell him had seemed like proof that he did not.",
+        "Knowing that did not make his words about strength hurt less.",
+        "\"When I come to you for help,\" she said, more slowly, \"don't tell me to be strong. I came to you to be weak for a while.\"",
+        "He rubbed his palms against his trousers.",
+        "\"I thought if I let you believe it was all gone, I'd be making it worse.\"",
+        "\"You don't have to believe it. I don't even believe it all the time. I just need to be allowed to feel it before someone explains why I shouldn't.\"",
+        "He looked at her then.",
+        "\"I can want to help,\" he said, \"and still not know how to help you the way you need.\"",
+        "There it was, without a promise attached. She did not know whether to be relieved by the honesty or frightened by how little it offered her.",
+        "His phone lit up. Neither of them looked.",
+        "\"I need a minute,\" he said. \"Not to leave. Just a minute without trying to say the right thing.\"",
+        "She nodded. When he went to the kitchen, she did not follow him.",
+        "The wet invitation lay on the cloth. Her name was still readable."
+      ]
+    }
   ]
 }

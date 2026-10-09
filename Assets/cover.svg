@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1500" viewBox="0 0 1000 1500" role="img" aria-labelledby="title description">
+  <title id="title">Ripples - A Rajesh Kodaganti's Unavailability</title>
+  <desc id="description">A literary cover in deep petrol, warm ivory and muted gold. Expressive painted forms suggest Aarna on the left; precise blue facets suggest Mukund on the right. Their symbolic profiles face a shared field of luminous water ripples.</desc>
+  <defs>
+    <linearGradient id="night" x2="80%" y2="100%"><stop stop-color="#071b24"/><stop offset=".55" stop-color="#16313a"/><stop offset="1" stop-color="#071b26"/></linearGradient>
+    <radialGradient id="atmosphere" cx="50%" cy="58%" r="60%"><stop stop-color="#648782" stop-opacity=".46"/><stop offset=".6" stop-color="#30505a" stop-opacity=".15"/><stop offset="1" stop-color="#06141e" stop-opacity="0"/></radialGradient>
+    <linearGradient id="gold" x2="100%" y2="30%"><stop stop-color="#947957"/><stop offset=".35" stop-color="#e0c79c"/><stop offset=".65" stop-color="#bfa079"/><stop offset="1" stop-color="#e5d1ad"/></linearGradient>
+    <linearGradient id="paintRose" x2="90%" y2="100%"><stop stop-color="#bb7e72"/><stop offset=".55" stop-color="#96646b"/><stop offset="1" stop-color="#21464b"/></linearGradient>
+    <linearGradient id="paintGold" x2="40%" y2="100%"><stop stop-color="#d2b487"/><stop offset=".5" stop-color="#a38966"/><stop offset="1" stop-color="#59736b"/></linearGradient>
+    <linearGradient id="skinWarm" x2="100%" y2="30%"><stop stop-color="#66776d"/><stop offset=".5" stop-color="#c4a18a"/><stop offset="1" stop-color="#a48177"/></linearGradient>
+    <linearGradient id="skinCool" x2="100%" y2="100%"><stop stop-color="#aac7ca"/><stop offset=".55" stop-color="#7299aa"/><stop offset="1" stop-color="#31556c"/></linearGradient>
+    <linearGradient id="water" x2="100%" y2="20%"><stop stop-color="#c7a582"/><stop offset=".35" stop-color="#e3d3b3"/><stop offset=".6" stop-color="#9bbdc4"/><stop offset="1" stop-color="#547e97"/></linearGradient>
+    <linearGradient id="fade" x2="0" y2="100%"><stop stop-color="#081a25" stop-opacity="0"/><stop offset="1" stop-color="#06151f"/></linearGradient>
+    <filter id="brush" x="-12%" y="-8%" width="124%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency=".013 .05" numOctaves="3" seed="22" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="paper" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="3" seed="12"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <clipPath id="trim"><path d="M0 0h1000v1500H0z"/></clipPath>
+  </defs>
+  <g clip-path="url(#trim)">
+    <path fill="url(#night)" d="M0 0h1000v1500H0z"/>
+    <path fill="url(#atmosphere)" d="M0 0h1000v1500H0z"/>
+    <g filter="url(#brush)" opacity=".85">
+      <path d="M-65 651L112 435 93 654 243 502 206 742 270 809 164 953 180 1142 68 1256 37 1064-55 989 29 791z" fill="#386465"/>
+      <path d="M-24 774L190 524 175 714 281 645 241 855 161 941 217 1119 136 1226 79 1147 105 979 16 887z" fill="url(#paintRose)"/>
+      <path d="M86 701L280 557 231 754 308 730 271 889 213 983 259 1126 168 1169 151 1026 179 895 111 859z" fill="url(#paintGold)"/>
+      <path d="M-26 1086L129 942 97 1102 214 1059 184 1236 248 1358 97 1295 33 1183z" fill="#326160"/>
+      <path d="M44 669L160 555M76 822l99-117M87 1107l54-110M171 1119l30-124" stroke="#d2ad91" stroke-width="5" fill="none" opacity=".36"/>
+    </g>
+    <g opacity=".8">
+      <path d="M774 498L950 384 1000 739 923 952 1000 1109 1000 1328 796 1243 837 1004 726 846z" fill="#234858"/>
+      <path d="M774 498L950 384 888 743z" fill="#527d91" opacity=".48"/>
+      <path d="M888 743L1000 592 1000 992 823 912z" fill="#79a0ad" opacity=".3"/>
+      <path d="M823 912L1000 992 886 1191 796 1243z" fill="#43687f" opacity=".65"/>
+      <path d="M950 384L888 743 1000 992 796 1243M774 498L923 952 886 1191" stroke="#b7d5d8" stroke-width="1" fill="none" opacity=".25"/>
+    </g>
+    <g opacity=".9">
+      <path d="M265 538C316 525 366 558 364 610L350 646 388 683 369 697 374 715 362 726 360 752C350 776 324 784 303 789L293 849 342 891 255 970 207 884 244 833 237 761C199 693 201 580 265 538z" fill="url(#skinWarm)"/>
+      <path d="M283 539C206 545 202 616 214 672S192 725 240 778C217 733 242 699 255 679S263 635 242 618C231 585 270 563 302 566" stroke="#15353c" stroke-width="13" fill="none"/>
+      <path d="M280 588C256 619 292 642 273 679S264 721 278 744" stroke="#6d6260" stroke-width="3" fill="none"/>
+      <path d="M331 645l22 4M362 715l-16 2" stroke="#735d58" stroke-width="2.5" fill="none"/>
+      <path d="M758 530L820 569 817 640 783 683 794 763 840 843 799 918 705 878 737 817 737 777 700 758 686 734 692 716 674 699 691 679 680 661 702 628 705 570z" fill="url(#skinCool)"/>
+      <path d="M705 570L758 530 820 569 782 593 702 628z" fill="#294653"/>
+      <path d="M782 593L817 640 740 682 702 628z" fill="#b0c4c6" opacity=".7"/>
+      <path d="M740 682L817 640 783 683 794 763 737 777z" fill="#4d778c"/>
+      <path d="M692 716L740 682 737 777 700 758 686 734z" fill="#acc9cf" opacity=".4"/>
+      <path d="M737 817L794 763 840 843 781 873 705 878z" fill="#17374b"/>
+      <path d="M840 843L922 946 889 1120 773 1052 781 873z" fill="#416b83" opacity=".6"/>
+    </g>
+    <g fill="none" transform="rotate(-14 508 970)">
+      <g stroke="#071e2a" stroke-width="6" opacity=".65">
+        <ellipse cx="508" cy="970" rx="108" ry="53"/><ellipse cx="508" cy="970" rx="197" ry="96"/>
+        <ellipse cx="508" cy="970" rx="303" ry="148"/><ellipse cx="508" cy="970" rx="419" ry="205"/>
+        <ellipse cx="508" cy="970" rx="547" ry="268"/>
+      </g>
+      <g stroke="url(#water)">
+        <ellipse cx="508" cy="965" rx="64" ry="31" stroke-width="2.5" opacity=".95"/>
+        <ellipse cx="508" cy="965" rx="106" ry="52" stroke-width="4" opacity=".86"/>
+        <ellipse cx="508" cy="965" rx="148" ry="72" stroke-width="1.5" opacity=".6"/>
+        <ellipse cx="508" cy="965" rx="195" ry="95" stroke-width="4.5" opacity=".78"/>
+        <ellipse cx="508" cy="965" rx="246" ry="120" stroke-width="1.5" opacity=".5"/>
+        <ellipse cx="508" cy="965" rx="301" ry="147" stroke-width="4" opacity=".67"/>
+        <ellipse cx="508" cy="965" rx="358" ry="175" stroke-width="1.5" opacity=".45"/>
+        <ellipse cx="508" cy="965" rx="417" ry="204" stroke-width="3" opacity=".57"/>
+        <ellipse cx="508" cy="965" rx="480" ry="235" stroke-width="1.5" opacity=".3"/>
+        <ellipse cx="508" cy="965" rx="545" ry="267" stroke-width="2.5" opacity=".38"/>
+        <ellipse cx="508" cy="965" rx="614" ry="300" stroke-width="1" opacity=".24"/>
+      </g>
+    </g>
+    <ellipse cx="508" cy="963" rx="12" ry="4" fill="#071722" opacity=".75"/>
+    <path d="M501 896c8-9 21-2 19 8-2 11-18 13-23 4-3-4 0-8 4-12z" fill="url(#gold)"/>
+    <path d="M0 1180h1000v320H0z" fill="url(#fade)"/>
+    <path d="M0 0h1000v1500H0z" filter="url(#paper)" opacity=".035"/>
+    <path d="M38 38h924v1424H38z" fill="none" stroke="url(#gold)" stroke-width="1" opacity=".45"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="500" y="139" fill="#b7c7c6" font-family="Arial, sans-serif" font-size="14" letter-spacing="5">A STORY OF MUKUND &amp; AARNA</text>
+    <text x="500" y="329" fill="#f0e5cf" font-family="Georgia, 'Times New Roman', serif" font-size="128" letter-spacing="8">RIPPLES</text>
+    <path d="M456 383h88" stroke="url(#gold)" stroke-width="1.5"/>
+    <text x="500" y="438" fill="#d6c5aa" font-family="Georgia, 'Times New Roman', serif" font-size="27" font-style="italic">A Rajesh Kodaganti's Unavailability</text>
+    <text x="500" y="1410" fill="#859c9f" font-family="Arial, sans-serif" font-size="11" letter-spacing="4">FIRST DRAFT</text>
+  </g>
+</svg>

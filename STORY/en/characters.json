@@ -1,0 +1,76 @@
+{
+  "origin": {
+    "name": "B(L)IND",
+    "description": "A dating app that arranges blind dates between random people. Its name holds both BLIND and BIND in the same word. It brought Aarna and Mukund to the same table three years ago; choosing to meet again was their decision."
+  },
+  "profiles": [
+    {
+      "id": "aarna",
+      "name": "Aarna",
+      "age": 28,
+      "occupation": "Painter",
+      "tagline": "She notices what a room feels like before she notices what needs fixing.",
+      "traits": ["Observant", "Expressive", "Persistent", "Self-questioning"],
+      "sections": [
+        {
+          "title": "Her world",
+          "paragraphs": ["Aarna has spent a year preparing a collection for her first major solo exhibition. Her paintings occupy her living room as well as her thoughts. An invitation with her name on it makes a private ambition feel real.", "She gives things close attention: the warmth of printed paper, the light around a doorway, a familiar blue shirt. Painting is her work, not simply a shorthand for being emotional."]
+        },
+        {
+          "title": "What she brings",
+          "paragraphs": ["She can make another person feel specifically seen. Her affection lives in small observations, private jokes, and the ability to stay with something that does not immediately make sense.", "She is capable of sustained practical effort. The exhibition required savings, applications, frames, and persistence; needing comfort does not erase that competence."]
+        },
+        {
+          "title": "Where she struggles",
+          "paragraphs": ["When something matters deeply, an impersonal setback can feel personal. She knows that failed gallery funding is not a rejection of her paintings, but knowing does not make the loss painless.", "She sometimes wants Mukund to understand without being told. Having to explain a need can feel, to her, like evidence that he has already missed it."]
+        },
+        {
+          "title": "How she loves",
+          "paragraphs": ["She remembers his habits and makes room for his ordinary presence. She values the occasions when his practical help has made a difference, even when the same response is not what she needs today.", "Emotional closeness, for her, includes being allowed to be uncertain, unproductive, and visibly upset without having to recover on someone else's schedule."]
+        },
+        {
+          "title": "The first meeting",
+          "paragraphs": ["B(L)IND arranged their random blind date three years ago. In the current draft, she arrives at a cafe with paint on her wrist; Mukund asks what she has been making. The conversation lasts beyond their coffee.", "The app and the blind-date origin are approved story facts. The cafe, paint mark, and dialogue are editable first-draft details."]
+        },
+        {
+          "title": "What this day asks of her",
+          "paragraphs": ["To name the support she needs without pretending the need is unreasonable. To distinguish a hurtful response from an absence of love, without using that distinction to excuse the hurt.", "Her aim is not to stop feeling intensely. It is to let someone know where to meet her."]
+        }
+      ]
+    },
+    {
+      "id": "mukund",
+      "name": "Mukund",
+      "age": 27,
+      "occupation": "Medical sales representative",
+      "tagline": "He reaches for a next step because standing still can feel like letting someone down.",
+      "traits": ["Dependable", "Resourceful", "Attentive", "Action-oriented"],
+      "sections": [
+        {
+          "title": "His world",
+          "paragraphs": ["Mukund works in medical sales, where appointments, figures, follow-ups, and a clear next step structure his day. The exact medical-device or pharmaceutical specialty has not yet been fixed.", "He is not a doctor, and his occupation does not explain his whole personality. What matters here is a habit he carries home: responding to distress by looking for something he can do."]
+        },
+        {
+          "title": "What he brings",
+          "paragraphs": ["He comes when Aarna calls, remembers details, and helps with the unglamorous work around her painting. He is capable of warmth and humour, not just efficiency.", "His resourcefulness has helped them before. A split frame, a difficult application, and an ordinary errand are places where practical care can be exactly right."]
+        },
+        {
+          "title": "Where he struggles",
+          "paragraphs": ["He can mistake being unable to remove pain for being unable to support someone. When he does not know what to say, a task gives him somewhere to put his fear.", "He often conceals his own distress behind being fine. That makes it harder for Aarna to recognise when his silence also contains a need."]
+        },
+        {
+          "title": "How he loves",
+          "paragraphs": ["Through reliability, attention, effort, and small acts he does not announce. He keeps an exhibition invitation in his bag because it matters, not because he needs the address.", "He wants Aarna's work to find its audience. Learning to stay beside her grief is an addition to that love, not a rejection of every useful thing he has done."]
+        },
+        {
+          "title": "The first meeting",
+          "paragraphs": ["B(L)IND placed him on a blind date with Aarna three years ago. In the current draft he arrives early, wearing blue, and asks about the paint on her wrist instead of opening with a job-title question.", "The pairing was random. The three years that followed were made of choices, not proof that an app knew they were destined for each other."]
+        },
+        {
+          "title": "What this day asks of him",
+          "paragraphs": ["To ask before solving. To tolerate not knowing. To recognise that Aarna's pain can remain present even while he is doing enough to support her.", "His aim is not to become a different person overnight. It is to stop treating emotional presence as something less valuable than a plan."]
+        }
+      ]
+    }
+  ]
+}

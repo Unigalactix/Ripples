@@ -1,17 +1,78 @@
 {
   "id": "trough",
   "title": "The Trough",
+  "status": "draft",
   "scene": "What remains when the anger fades",
-  "together": [
-    "The confrontation gives way to more vulnerable honesty. Neither the exhibition nor the relationship can be repaired by a perfect sentence.",
-    "For the first time that day, they begin to distinguish the intention behind an action from the way it feels to receive it."
-  ],
-  "aarna": [
-    "She begins to recognize that his limitations do not necessarily mean an absence of love.",
-    "Understanding him does not erase her need for emotional presence; it gives them a clearer place from which to speak."
-  ],
-  "mukund": [
-    "He begins to understand that her feelings are not another problem he can solve on her behalf.",
-    "Being with her in the pain may matter before any plan for what comes next."
+  "manuscript": [
+    {
+      "perspective": "mukund",
+      "paragraphs": [
+        "The kitchen light was brighter than he wanted.",
+        "Mukund stood under it with both hands on the counter. There was no reason to turn on the tap. He had already washed everything.",
+        "He thought about the question he had nearly asked: what she needed him for, if not to be useful. In the kitchen it sounded worse, and also more honest.",
+        "He had never liked waiting beside something he could not change. If a call went badly, he made another. If he felt embarrassed, he prepared better for next time. Even rest became easier when he could tell himself it would make tomorrow more productive.",
+        "He had carried that habit into the room and handed it to her as comfort.",
+        "His phone vibrated again. This time it was the venue. A room might be available the following weekend. They wanted dates, numbers, a deposit.",
+        "He read the message twice. Here was a way to return with something better than an apology.",
+        "He put the phone in his pocket.",
+        "When he came back, Aarna was standing by the wall, holding the little sheet with the cross on it.",
+        "\"I was going to photograph it,\" she said.",
+        "\"The one by the window?\"",
+        "She nodded.",
+        "\"You can still...\" He stopped.",
+        "She looked at him. For a second he wanted to pretend he had meant another sentence.",
+        "\"I'm doing it again,\" he said.",
+        "\"A little.\"",
+        "He nodded. The correction did not feel good, but nothing terrible happened after it.",
+        "\"I'm sorry I made you defend being upset.\"",
+        "Aarna looked down at the paper. He did not add anything."
+      ]
+    },
+    {
+      "perspective": "aarna",
+      "paragraphs": [
+        "She had been preparing an answer to a sentence he had not finished. Without it, she had nothing ready.",
+        "The cross was slightly off centre. She folded the paper once, following a crease the tape had left, then opened it again.",
+        "\"I'm sorry I spoke as if coming here didn't matter,\" she said. \"It did.\"",
+        "He leaned against the wall, leaving space between them.",
+        "\"And I'm sorry about the cloth.\"",
+        "\"It survived.\"",
+        "She laughed once. It surprised them both.",
+        "For the first time since the call, she noticed how hungry she was. The feeling was inconveniently ordinary. She had been devastated all afternoon, and her body still expected dinner.",
+        "\"Can we eat something?\" she asked.",
+        "He reached for his phone, then looked at her before unlocking it.",
+        "\"Food,\" she said. \"You can solve food.\"",
+        "His smile was small and exhausted.",
+        "While they waited, they sat on the floor again. He chose the place beside her without asking which one.",
+        "\"What was it going to be like?\" he asked.",
+        "\"What?\"",
+        "\"The first evening.\"",
+        "She could not answer immediately. Earlier she had wanted the question so badly that hearing it now made her angry for a moment, as if it had arrived after a door had closed.",
+        "Then she told him about the bag.",
+        "She told him about the black shoes she had bought and not broken in, and the possibility that nobody would come until half an hour after the opening time. She had imagined him pretending not to watch the entrance. She had imagined a stranger stopping in front of a painting and staying there.",
+        "\"Not buying it,\" she said. \"Just looking long enough that I could stop wondering if there was anything to see.\"",
+        "Mukund looked at the canvases around them.",
+        "\"You wanted somebody to meet the work.\"",
+        "She nodded. It was not everything, but it was close enough that she did not have to correct him.",
+        "The tears came then. Quietly at first, and then with the ugly effort of trying to keep them quiet. She covered her face.",
+        "\"Can I?\" he asked, touching her elbow.",
+        "She leaned towards him."
+      ]
+    },
+    {
+      "perspective": "mukund",
+      "paragraphs": [
+        "He put an arm around her and discovered how much effort it took not to speak.",
+        "Several sentences offered themselves. The work was good. There would be another show. This would look different in a month.",
+        "He believed all of them. He let them wait.",
+        "At one point she apologised for getting his shirt wet.",
+        "\"It's already painted,\" he said.",
+        "Her laugh broke in the middle. He held her while it turned back into crying.",
+        "He was not calm. His leg had gone numb, his phone was vibrating in his pocket, and some part of him still wanted a timetable for when she would feel better. But he could have those feelings without putting them in her hands.",
+        "When the doorbell rang, he waited until she moved away.",
+        "\"I'll get it,\" he said.",
+        "This time it was only the door."
+      ]
+    }
   ]
 }

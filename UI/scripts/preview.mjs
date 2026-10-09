@@ -1,13 +1,15 @@
 import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
 
-const root = new URL("../dist/", import.meta.url);
+const root = new URL(process.argv.includes("--root") ? "../../" : "../dist/", import.meta.url);
 const routes = new Map([
   ["/Ripples/", ["index.html", "text/html; charset=utf-8"]],
   ["/Ripples/index.html", ["index.html", "text/html; charset=utf-8"]],
-  ["/Ripples/styles.css", ["styles.css", "text/css; charset=utf-8"]],
-  ["/Ripples/app.js", ["app.js", "text/javascript; charset=utf-8"]],
-  ["/Ripples/content.js", ["content.js", "text/javascript; charset=utf-8"]],
+  ["/Ripples/UI/src/styles.css", ["UI/src/styles.css", "text/css; charset=utf-8"]],
+  ["/Ripples/UI/src/app.js", ["UI/src/app.js", "text/javascript; charset=utf-8"]],
+  ["/Ripples/UI/content.js", ["UI/content.js", "text/javascript; charset=utf-8"]],
+  ["/Ripples/Assets/cover.svg", ["Assets/cover.svg", "image/svg+xml"]],
+  ["/Ripples/Assets/favicon.svg", ["Assets/favicon.svg", "image/svg+xml"]],
 ]);
 
 const server = createServer(async (request, response) => {
@@ -16,7 +18,9 @@ const server = createServer(async (request, response) => {
     response.writeHead(302, { Location: "/Ripples/" }).end();
     return;
   }
-  const asset = routes.get(pathname);
+  const edition = pathname.match(/^\/Ripples\/Assets\/books\/(ripples-[a-z]{2,3}(?:-[a-z0-9]{2,8})*\.(html|epub))$/i);
+  const asset = routes.get(pathname) ?? (edition ? [`Assets/books/${edition[1]}`,
+    edition[2].toLowerCase() === "epub" ? "application/epub+zip" : "text/html; charset=utf-8"] : undefined);
   if (!asset) {
     response.writeHead(404).end("Not found.");
     return;
