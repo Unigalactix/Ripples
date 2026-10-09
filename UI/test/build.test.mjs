@@ -121,10 +121,10 @@ test("character profiles preserve approved ages, both perspectives and B(L)IND o
   assert.ok(locale.opening[0].manuscript.some(block => block.paragraphs.some(text => text.includes("B(L)IND"))));
 });
 
-test("revision connects painting, misunderstanding and commitment without losing the quiet ending", async () => {
+test("weekend revision keeps the painting and mutual commitment without erasing either loss", async () => {
   const [locale] = await loadStory(storyRoot);
   const prose = chapter => chapter.manuscript.flatMap(block => block.paragraphs).join("\n");
-  for (const chapter of [locale.opening[0], locale.opening[1], locale.chapters[0], locale.chapters[1], locale.chapters[3]]) {
+  for (const chapter of [locale.opening[0], locale.opening[1], locale.chapters[2]]) {
     assert.ok(prose(chapter).includes("Room Enough"));
   }
   assert.ok(prose(locale.opening[0]).includes("old film song"));
@@ -132,12 +132,58 @@ test("revision connects painting, misunderstanding and commitment without losing
   assert.ok(prose(locale.chapters[2]).includes("Maybe I'm not the person you need"));
   const ending = prose(locale.chapters[4]);
   assert.ok(!ending.includes("choosing you while we learn"));
-  assert.ok(ending.includes("Will you talk to me about it when I'm not crying?"));
-  assert.ok(ending.includes("And come back."));
-  assert.ok(ending.includes("moved his bag from beside the door to the sofa"));
-  assert.ok(ending.includes("her hair caught under his collar"));
-  assert.ok(ending.includes("hammer was still on the windowsill"));
-  assert.ok(ending.endsWith("He left it on."));
+  assert.ok(ending.includes("I don't want yesterday to disappear because we got scared about something else."));
+  assert.ok(ending.includes("The show still hurts."));
+  assert.ok(ending.includes("We're okay."));
+  assert.ok(ending.includes("I'll ask before I start making calls."));
+  assert.ok(ending.endsWith("They stayed there in the quiet hospital lobby, holding each other."));
+  assert.ok(ending.indexOf("His mother was doing well after treatment") < ending.indexOf("Are we okay?"));
+});
+
+test("Friday-to-Saturday timeline includes shared home, dinner, walking and Saturday travel", async () => {
+  const [locale] = await loadStory(storyRoot);
+  const prose = chapter => chapter.manuscript.flatMap(block => block.paragraphs).join("\n");
+  const before = prose(locale.opening[0]);
+  assert.ok(before.startsWith("At six on Friday evening"));
+  for (const detail of ["three bedrooms", "during their second year", "Chicago River", "own workspace"]) {
+    const variants = detail === "own workspace" ? ["their workspaces"] : [detail];
+    assert.ok(variants.some(value => before.includes(value)), `Missing shared-home detail: ${detail}`);
+  }
+  for (const detail of ["each had a car", "For a year", "mostly ate out", "weekends", "Hindi, English, Telugu", "earbud"]) {
+    assert.ok(before.includes(detail), `Missing routine: ${detail}`);
+  }
+  const dinner = prose(locale.chapters[0]);
+  assert.ok(dinner.includes("We can walk."));
+  assert.ok(dinner.includes("small place a few blocks away"));
+  assert.ok(prose(locale.chapters[1]).startsWith("They walked home beside the river."));
+  assert.ok(prose(locale.chapters[2]).includes("At ten-forty"));
+  const flight = prose(locale.chapters[3]);
+  assert.ok(flight.includes("Before dawn on Saturday"));
+  assert.ok(flight.includes("in her car"));
+  assert.ok(flight.includes("His remained in the apartment garage"));
+  assert.ok(flight.includes("On the flight to San Jose"));
+  assert.ok(flight.includes("I don't want to pretend it didn't happen."));
+  assert.ok(prose(locale.chapters[4]).includes("At nine-thirty on Saturday night, California time"));
+  assert.match(locale.labels.subtitle, /weekend/i);
+  assert.ok(!/one day/i.test(locale.labels.subtitle));
+});
+
+test("brother reports mild heart attack and good news precedes the lobby resolution", async () => {
+  const [locale] = await loadStory(storyRoot);
+  const text = locale.chapters.flatMap(chapter => chapter.manuscript.flatMap(block => block.paragraphs)).join("\n");
+  assert.ok(text.includes("Mom's had a mild heart attack"));
+  assert.ok(text.includes("his brother said"));
+  assert.ok(text.includes("I'm with her."));
+  assert.ok(text.includes("stable for now"));
+  assert.ok(text.includes("continue monitoring her"));
+  assert.ok(text.includes("His mother was doing well after treatment for the mild heart attack"));
+  assert.ok(!/\b(minor heart stroke|minor stroke|fully recovered)\b/i.test(text));
+  for (const profile of locale.characters.profiles) {
+    const publicText = profile.sections.filter(section => !section.spoiler).flatMap(section => section.paragraphs).join("\n");
+    assert.ok(!/\b(hospital|hospitalized|diagnosis|flight)\b/i.test(publicText), "Health turn should not appear in spoiler-free profile.");
+    assert.ok(profile.sections.filter(section => section.spoiler).some(section =>
+      section.paragraphs.some(paragraph => /hospital/i.test(paragraph))));
+  }
 });
 
 test("Chicago and the supplied family histories remain correctly assigned", async () => {

@@ -10,18 +10,23 @@
       "age": 28,
       "occupation": "Painter",
       "tagline": "She notices what a room feels like before she notices what needs fixing.",
-      "gesture": "She holds an invitation to the morning light, watching the paper grow warmer around her name.",
+      "gesture": "She leaves a doorway unfinished in her sketchbook and rests her hand on the back of his neck as she passes.",
       "traits": ["Observant", "Expressive", "Persistent", "Self-questioning"],
       "sections": [
         {
           "title": "Her world",
           "spoiler": false,
-          "paragraphs": ["Aarna is a painter living in Chicago. She has spent a year preparing a collection for her first major solo exhibition. An invitation with her name on it is about to join the instruments in her parents' shop window.", "She gives things close attention: the warmth of printed paper, the light around a doorway, a familiar blue shirt. Painting is her work, not simply a shorthand for being emotional."]
+          "paragraphs": ["Aarna is a painter living with Mukund in a three-bedroom downtown Chicago apartment overlooking the river. They moved in together during their second year. They share one bedroom and have a separate workspace each.", "She has spent a year preparing her first major solo exhibition. She thinks through paintings in a sketchbook, sometimes returning to the same doorway without erasing an earlier attempt. Painting is her work, not simply shorthand for being emotional."]
         },
         {
           "title": "Home, family and education",
           "spoiler": false,
-          "paragraphs": ["Her family is originally from India and settled in the United States. Her parents live in New Jersey, where they own a shop selling musical instruments.", "She graduated from college in New York state and now lives in Chicago. Her university, degree, family names and exact hometown in New Jersey have not been specified.", "In this draft, her father checks invoices line by line and puts her exhibition invitation in the shop window. Their parcels and messages are ordinary forms of affection, not pressure for her to choose another career."]
+          "paragraphs": ["Her family is originally from India and settled in the United States. Her parents live in New Jersey, where they own a shop selling musical instruments.", "She graduated from college in New York state and now lives in Chicago. Her university, degree, family names and exact hometown in New Jersey have not been specified.", "She and Mukund both have cars now. For a year he drove her to work, errands and other places. The reason she did not drive then remains unspecified; the draft remembers a large roll of art paper that would barely fit in his car."]
+        },
+        {
+          "title": "Their everyday life",
+          "spoiler": false,
+          "paragraphs": ["They mostly eat out and sometimes cook together on weekends. They watch Hindi, English and Telugu films, listen to songs, and take night walks beside the river.", "At home she sketches and thinks through painting ideas while Mukund reads. They can share a quiet room without sharing the same activity."]
         },
         {
           "title": "A settled past",
@@ -36,7 +41,7 @@
         {
           "title": "Where she struggles",
           "spoiler": true,
-          "paragraphs": ["When something matters deeply, an impersonal setback can feel personal. She knows that failed gallery funding is not a rejection of her paintings, but knowing does not make the loss painless.", "She sometimes wants Mukund to understand without being told. Having to explain a need can feel, to her, like evidence that he has already missed it."]
+          "paragraphs": ["Aarna has a short temper. When she feels unheard, she can return to the same point and sharpen her words while trying to get a response that feels right. She is responsible for how she speaks, even when her hurt is understandable.", "She can be capable with bookings and everyday tasks while still needing someone to sit with her disappointment. The story does not treat those needs as contradictory."]
         },
         {
           "title": "How she loves",
@@ -49,9 +54,9 @@
           "paragraphs": ["B(L)IND arranged their random blind date three years ago. In the current draft, she arrives at a cafe with paint on her wrist; Mukund asks what she has been making. The conversation lasts beyond their coffee.", "The app and the blind-date origin are approved story facts. The cafe, paint mark, and dialogue are editable first-draft details."]
         },
         {
-          "title": "What this day asks of her",
+          "title": "What this weekend asks of her",
           "spoiler": true,
-          "paragraphs": ["The cancellation means telling the people who have made space for her work, including her parents. Room Enough is based on her first Chicago rental, where she hid her paints before visitors came.", "She asks for company rather than another task, apologizes for how she has spoken, and asks whether they will talk again when she is no longer crying. Choosing the person does not erase the disagreement."]
+          "paragraphs": ["Friday's cancellation takes away both an exhibition and the celebration they had planned. The ordinary dinner and walk home continue while their argument rises and falls.", "When Mukund's brother calls about their mother's mild heart attack, Aarna travels with Mukund to San Jose on Saturday. She drives to the airport, listens on the flight, and stays beside him. Her gallery loss still matters; the emergency does not cancel it.", "After they know his mother is doing well, they settle their argument in the hospital lobby on Saturday night. Both apologize and agree on how to respond differently. They end by hugging, without requiring Aarna's grief about the exhibition to be over."]
         }
       ]
     },
@@ -61,18 +66,23 @@
       "age": 27,
       "occupation": "Medical sales representative",
       "tagline": "He reaches for a next step because standing still can feel like letting someone down.",
-      "gesture": "He slips her exhibition invitation into his bag, away from the brochures, so its corners will stay flat.",
+      "gesture": "He uncovers his book and keeps her place in the sketchbook with an unopened envelope.",
       "traits": ["Dependable", "Resourceful", "Attentive", "Action-oriented"],
       "sections": [
         {
           "title": "His world",
           "spoiler": false,
-          "paragraphs": ["Mukund moved to Chicago for work after graduating from college in California. He works in medical sales; the exact medical-device or pharmaceutical specialty has not been fixed.", "Appointments, figures and follow-ups structure part of his day. He is not a doctor, and his work is not a complete explanation of his personality."]
+          "paragraphs": ["Mukund moved to Chicago for work after graduating from college in California. He works in medical sales; the exact medical-device or pharmaceutical specialty has not been fixed.", "He lives with Aarna in a three-bedroom downtown apartment overlooking the Chicago River. They moved in together during their second year, share a bedroom, and each have a home workspace. He also reads in a chair beside the river-view window."]
         },
         {
           "title": "Home, family and education",
           "spoiler": false,
-          "paragraphs": ["His family is originally from India and settled in the United States. His mother and elder brother live in San Jose, California. His brother is a software engineer.", "His mother makes podcasts interviewing celebrities and other prominent people around the country, mostly Indian celebrities and public figures settled in the United States.", "He graduated in California before moving to Chicago for his job. No specific university, campus, degree or family names have been established. In the draft, his brother's tomato photograph and his mother's recording are part of an ordinary family exchange."]
+          "paragraphs": ["His family is originally from India and settled in the United States. His mother and elder brother live in San Jose, California. His brother is a software engineer.", "His mother makes podcasts interviewing celebrities and other prominent people around the country, mostly Indian celebrities and public figures settled in the United States.", "He graduated in California before moving to Chicago for his job. No specific university, campus, degree or family names have been established. His mother's podcast introduction is part of an ordinary family exchange at the beginning of the draft."]
+        },
+        {
+          "title": "Their everyday life",
+          "spoiler": false,
+          "paragraphs": ["Mukund reads books for pleasure and listens to songs, sometimes singing an old film tune incorrectly. He and Aarna see Hindi, English and Telugu films, usually eat out, and sometimes cook together on weekends.", "They each have a car now. For a year he drove Aarna to work and other places, often reading while waiting. Night walks beside the river and quiet time with his book and her sketchbook are familiar routines."]
         },
         {
           "title": "A settled past",
@@ -87,12 +97,12 @@
         {
           "title": "Where he struggles",
           "spoiler": true,
-          "paragraphs": ["He can mistake being unable to remove pain for being unable to support someone. When he does not know what to say, a task gives him somewhere to put his fear.", "He often conceals his own distress behind being fine. That makes it harder for Aarna to recognise when his silence also contains a need."]
+          "paragraphs": ["Mukund usually keeps his temper, but can become frustrated and occasionally raise his voice when the same disagreement keeps returning. That is not an excuse for speaking harshly; he acknowledges and apologizes for it.", "He can mistake a useful action for the support Aarna needs at that moment. When his mother is hospitalized, he also discovers how little reassurance a practical answer can provide when fear remains."]
         },
         {
           "title": "How he loves",
           "spoiler": true,
-          "paragraphs": ["Through reliability, attention, effort, and small acts he does not announce. He keeps an exhibition invitation in his bag because it matters, not because he needs the address.", "He wants Aarna's work to find its audience. Learning to stay beside her grief is an addition to that love, not a rejection of every useful thing he has done."]
+          "paragraphs": ["Through reliability, attention, effort, and ordinary acts: driving her places, saving her sketchbook page, remembering which restaurant seat keeps her out of the draft.", "He wants Aarna's work to find its audience. Learning to wait beside her disappointment is an addition to that care, not a rejection of every useful thing he has done."]
         },
         {
           "title": "The first meeting",
@@ -100,9 +110,9 @@
           "paragraphs": ["B(L)IND placed him on a blind date with Aarna three years ago. In the current draft he arrives early, wearing blue, and asks about the paint on her wrist instead of opening with a job-title question.", "The pairing was random. The three years that followed were made of choices, not proof that an app knew they were destined for each other."]
         },
         {
-          "title": "What this day asks of him",
+          "title": "What this weekend asks of him",
           "spoiler": true,
-          "paragraphs": ["His statement of inadequacy sounds to Aarna like he might leave. He returns from the kitchen without a solution and lets her show him a painting he has misunderstood.", "At the end he admits he does not understand all of it, agrees to talk tomorrow, and moves his bag away from the door. The commitment is shown in those actions rather than a speech."]
+          "paragraphs": ["His brother calls on Friday night to say their mother has had a mild heart attack and is receiving hospital care in San Jose. By Saturday night the doctor has confirmed she is doing well after treatment; she remains under observation with recovery and follow-up care to discuss.", "On Saturday's flight he accepts Aarna's presence without treating it as proof that Friday's disagreement is over. Their conversation begins the repair, but does not finish it.", "With the immediate worry eased, they settle the conflict in the hospital lobby and end in an embrace. He acknowledges not listening and agrees to ask before acting; she takes responsibility for pressing the argument instead of stating her need."]
         }
       ]
     }

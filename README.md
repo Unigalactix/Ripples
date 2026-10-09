@@ -121,26 +121,31 @@ See [the story guide](STORY/README.md) for writing and translation conventions.
 
 ## Revised emotional arc
 
-The story now lives in **Chicago**, with Indian-American families in San Jose
-and New Jersey. Mukund studied in California before moving for work; Aarna
-graduated in New York state. His mother's podcast work, his software-engineer
-brother, and her parents' musical-instrument shop enter through ordinary details.
-Their earlier relationships are settled history and do not intrude.
+The story runs from **Friday after work in Chicago to Saturday night in San Jose**.
+Aarna and Mukund share a three-bedroom downtown apartment overlooking the river,
+with their bedroom and separate workrooms. They moved in during their second
+year. They both drive now; he drove her everywhere for a year. Meals out, weekend
+cooking, movies in Hindi/English/Telugu, music, night walks, his books and her
+sketches are part of the life the argument moves through.
 
-The manuscript develops **Room Enough**, Aarna's widened-doorway painting, and
-her wish not to pack herself away to make space for another person. Mukund's
-patient first-date curiosity and his imperfect singing complicate his practical
-habits; Aarna also handles bookings and money competently. The confrontation
-includes a statement of inadequacy mistaken for an intention to leave.
+The cancellation ends a fancy dinner planned to celebrate her gallery acceptance,
+but they still eat at an ordinary restaurant and walk home. Care and disagreement
+alternate rather than waiting for the argument to end before life resumes.
 
-Their ending puts mutual commitment before a claim of complete understanding:
-choosing to come back, listen, correct themselves, and keep learning rather than
-put the whole relationship on trial with each misunderstanding. It does not
-treat staying as permission to ignore harm. The quiet lamp-and-shoulder ending,
-the original dedication, and the one-day structure remain.
-The latest pass removes the speech spelling out that principle and tightens
-the repeated exchanges. They agree to talk tomorrow, move the bag, and leave
-the lamp on; the narration does not explain those actions afterward.
+**Spoilers:** Friday night's family call leads to Saturday travel. His mother
+has had a mild heart attack, as reported by his brother. She is already receiving
+care in San Jose. By Saturday night the doctor confirms she is doing well after
+treatment, with observation and follow-up still appropriate. The story does not
+conflate a stroke with a heart attack or turn Aarna's gallery loss into something
+insignificant.
+
+They continue the conversation on the flight. Aarna stays beside Mukund and
+supports him, while both admit some hurt remains. After the good news about his
+mother, they settle the argument in the hospital lobby on Saturday night and
+end by hugging. Their commitment means showing up, listening, and taking
+responsibility, not claiming perfect understanding.
+The dedication, family backgrounds, settled past relationships, and chapter order
+are preserved. The earlier same-night-in-Chicago ending is superseded.
 
 ## Relationship origin
 

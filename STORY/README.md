@@ -27,8 +27,8 @@ remain stable solely to preserve existing reader links and translation mappings.
 
 ### Established setting and family background
 
-- The present-day story takes place in **Chicago**. Both families are originally
-  from India and settled in America.
+- The present-day story begins **Friday evening in Chicago** and ends **Saturday
+  night in San Jose**. Both families are originally from India and settled in America.
 - **Mukund:** graduated in California, then moved to Chicago for work. His
   mother and elder brother live in San Jose. His brother is a software engineer;
   his mother makes podcasts with celebrities and prominent people across the US,
@@ -39,22 +39,44 @@ remain stable solely to preserve existing reader links and translation mappings.
   jealousy, intrusion, comparisons or conflict between them.
 
 The states of education do not specify universities or degrees. Family names,
-immigration timing, and other relatives' circumstances remain open. The shop-window
-invitation, brother's tomato photograph and mother's recording are draft scenes
-using the established backgrounds, not additional author-supplied facts.
+immigration timing, and other relatives' circumstances remain open.
 
-The opening uses close third person, with explicit Aarna/Mukund perspective
-breaks. It introduces an ordinary morning, the cancellation that afternoon, and
-Mukund's arrival. Funding has fallen through; the gallery has not rejected
-Aarna's art. The morning invitation, paint-marked cuff, and unfinished practical
-task carry through the scenes.
+### Shared home and routines
 
-Scene details and the narrative voice remain editable proposals. All seven story
-sections now contain first-draft prose. The later waves recall the broken frame
-at a group exhibition and Mukund's missed sales target, then move through the
-argument, vulnerable honesty, dinner, and a same-night commitment. These are
-proposed shared memories, not final canon. No new childhood trauma is asserted.
-The ending is at 11:42 that night; practical plans wait until tomorrow.
+They moved in together during the second year of their three-year relationship.
+Their downtown Chicago apartment overlooks the river and has three bedrooms:
+one shared bedroom and a separate workspace for each. They each have a car now;
+Mukund drove Aarna to work and other places for a year. Why she did not drive then
+has not been established.
+
+They mostly eat out, sometimes cook together on weekends, go to Hindi, English
+and Telugu films, listen to songs, and take night walks. He reads; she drafts and
+thinks through paintings. Their ordinary routines continue through the conflict.
+
+### Current timeline
+
+| Section | Time and movement |
+| --- | --- |
+| Before | Friday, 6pm: Mukund returns from work to their shared Chicago home. |
+| A Pebble | Friday evening: gallery funding cancellation; the dinner celebrating her acceptance is canceled. |
+| The First Ripple | They walk to an ordinary restaurant and eat despite the disagreement. |
+| Crosscurrents | Friday night: walk by the river and return to the shared apartment; anger rises again. |
+| The Crest | Friday, 10:40pm Chicago time: his brother calls from a San Jose hospital; they book Saturday travel. |
+| The Trough | Saturday morning: Aarna drives them to the airport; they revisit the conflict on the flight to San Jose. |
+| Still Water | Saturday hospital visit; mother doing well after treatment; lobby reconciliation and final hug at 9:30pm California time. |
+
+The author has clarified the health event as a **mild heart attack**. Mukund's
+brother calls with the news on Friday and is already with their mother. By
+Saturday night's final conversation, the doctor has confirmed that she is doing
+well after treatment. She remains under observation and will need recovery and
+follow-up care; the story does not treat a heart attack as harmless.
+No hospital name, exact flight service or procedure has been invented.
+
+The health scare does not make Aarna's disappointment trivial or automatically
+resolve the relationship conflict. She supports him while still hurt. Once they
+know his mother is well, both take responsibility and settle the disagreement in
+the hospital lobby, ending in an embrace. The previous
+one-day ending is superseded; the dedication and approved chapter order remain.
 
 The author has established that they began dating through **B(L)IND**, which
 sets up blind dates between random people. Preserve that exact name and its
@@ -73,32 +95,26 @@ before treating it as final. The author's dedication is included verbatim.
 
 ### Editorial revision
 
-The Chicago pass trims repeated fixing/listening exchanges, removes narration
-that explains the preceding gesture, and replaces the closing statement of
-principle with an agreement to talk the following day. The two characters'
-families appear through ordinary messages and objects, not trauma or exposition
-designed to explain every aspect of their personalities.
+The weekend pass gives ordinary life room inside the disagreement: ordering food,
+sharing leftovers, carrying a bag, opening the building door, and finding chargers.
+Aarna's short temper and repeated attempts to be heard meet Mukund's occasional
+frustration, but neither is excused from responsibility for harsh words.
 
-- **Before / A Pebble:** Room Enough is a specific painting with a personal
-  history, not generic vulnerability. The first-date memory shows that Mukund
-  can listen; his singing and Aarna's practical competence complicate their roles.
-- **The First Ripple:** relief at his arrival becomes distance when his plans
-  replace attention.
-- **Crosscurrents:** the old successful repair pattern fails; they literally
-  hold opposite sides of the painting.
-- **The Crest:** imperfect speech escalates into a misunderstanding about
-  whether he wants to leave the relationship.
-- **The Trough:** he returns, apologizes for that fear, and lets her show him a
-  painting he has misunderstood.
-- **Still Water:** a small misstep remains after reconciliation. They choose
-  one another through an agreement to return after a pause and talk tomorrow.
-  Neither claims complete understanding. There is no concluding speech about
-  commitment; the bag moves away from the door and the lamp stays on.
+- **Before / A Pebble:** a shared Friday routine and a planned celebration
+  establish what is disrupted. Room Enough retains its personal meaning.
+- **The First Ripple:** an ordinary meal includes care and a renewed disagreement.
+- **Crosscurrents:** the river walk brings pauses, a memory of his driving her,
+  and another rise in tension after they reach home.
+- **The Crest:** relationship uncertainty is interrupted by a family hospital call.
+- **The Trough:** on the flight, she offers the presence she needed and he accepts
+  it; they apologize without pretending all hurt has disappeared.
+- **Still Water:** reassurance about his mother makes room for the final lobby
+  conversation. They settle their argument, agree how to do better, and hug.
+  The gallery loss still matters even though the relationship conflict is settled.
 
-Commitment is the ground for learning, not an excuse for repeated hurt. Keep
-the ending's physical details and avoid adding a speech explaining the lamp.
-The hammer moves from the chair to the windowsill when Mukund arrives, and stays
-there. Preserve the same-night ending and its final line: "He left it on."
+Commitment is the ground for learning, not an excuse for repeated hurt. The
+ending's relief, direct conversation and embrace carry the emotion. Do not turn
+the crisis into a test Aarna must pass to deserve love.
 
 ## Content format
 
