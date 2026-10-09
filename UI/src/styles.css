@@ -1,0 +1,96 @@
+:root {
+  color-scheme: dark;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #eaf2f2;
+  background: #0b1a23;
+  line-height: 1.7;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, select { font: inherit; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid #f4ca8c; outline-offset: 5px; }
+[hidden] { display: none !important; }
+.skip { position: absolute; inset-block-start: -100px; inset-inline-start: 1rem; z-index: 1; }
+.skip:focus { inset-block-start: 1rem; padding: .5rem 1rem; background: #102d3b; }
+.hero {
+  text-align: center;
+  padding: 4rem 1.25rem 2rem;
+  background: repeating-radial-gradient(ellipse at 50% 0, transparent 0 65px, #8dcbca12 66px 67px, transparent 68px 130px);
+}
+h1 { margin: .25rem 0; font-size: clamp(3.5rem, 10vw, 6rem); font-weight: 400; letter-spacing: .04em; }
+h2, h3 { line-height: 1.3; font-weight: 400; }
+.eyebrow, .draft, label, button, select, .wave-map, .pager { font-family: system-ui, sans-serif; }
+.eyebrow { color: #93d3d0; font-size: .8rem; letter-spacing: .12em; }
+.subtitle { font-size: 1.2rem; }
+.draft { color: #d8c19f; font-size: .85rem; }
+.language-control { margin-block-start: 1.5rem; }
+label { margin-inline-end: .6rem; font-size: .9rem; }
+select, button {
+  color: #eaf2f2;
+  background: #173746;
+  border: 1px solid #769ba6;
+  border-radius: .5rem;
+  padding: .55rem .8rem;
+  min-height: 44px;
+}
+button { cursor: pointer; }
+button:disabled, select:disabled { opacity: .65; cursor: default; }
+main { max-width: 1150px; padding: 0 1.25rem 3rem; margin: auto; }
+.wave-map { margin-block: 2rem 3rem; }
+.wave-map h2 { font-size: 1rem; text-align: center; color: #b2c8cd; }
+.wave-map ol { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: .75rem; }
+.wave-map li { min-width: 0; }
+.wave-map a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  gap: .7rem;
+  padding: 1rem .5rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: .75rem;
+}
+.wave-map a:hover { background: #173746; }
+.wave-map a[aria-current] { background: #173746; border-color: #93d3d0; }
+.wave-circle {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid #93d3d0;
+  box-shadow: 0 0 0 6px #93d3d012, 0 0 0 12px #93d3d008;
+}
+.wave-map small { font-size: .75rem; color: #b2c8cd; }
+.reader { border: 1px solid #365665; border-radius: 1rem; padding: clamp(1rem, 4vw, 3rem); background: #102530; }
+.reader-tools { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-block-end: 2rem; }
+#chapter-title { font-size: clamp(2rem, 5vw, 3rem); margin-block: .5rem; }
+.scene { color: #b2c8cd; font-style: italic; }
+#shared { max-width: 72ch; font-size: 1.1rem; }
+.perspectives { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.5rem; margin-block: 2rem; }
+.voice { padding-inline-start: 1.25rem; border-inline-start: 2px solid #93d3d0; }
+.voice.mukund { border-color: #d8b987; }
+.voice h3 { font-size: 1.5rem; margin-block: 0 .75rem; }
+.pager { display: flex; justify-content: space-between; align-items: center; gap: .75rem; border-block-start: 1px solid #365665; padding-block-start: 1rem; }
+#progress { white-space: nowrap; }
+#error, noscript { display: block; padding: 1rem; border: 1px solid #f4ca8c; color: #f4ca8c; }
+
+@media (max-width: 650px) {
+  .hero { padding-block-start: 3rem; }
+  .wave-map ol { grid-template-columns: 1fr; gap: .25rem; }
+  .wave-map a { display: grid; grid-template-columns: 3rem 1fr; text-align: start; padding: .8rem; column-gap: 1.25rem; }
+  .wave-circle { grid-row: span 2; }
+  .wave-map small { grid-column: 2; }
+  .pager { flex-wrap: wrap; }
+}
+
+@media print {
+  :root { color-scheme: light; color: #111; background: white; }
+  .hero, .reader { background: none; }
+  .wave-map, .reader-tools, .language-control, .pager, .skip { display: none; }
+  .eyebrow, .scene, .draft { color: #333; }
+}

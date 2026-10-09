@@ -1,0 +1,24 @@
+[
+  {
+    "code": "en",
+    "name": "English",
+    "dir": "ltr",
+    "title": "Ripples",
+    "labels": {
+      "subtitle": "One day. Two perspectives. Five waves.",
+      "status": "Chapter outlines - the full story is still being written.",
+      "language": "Reading language",
+      "map": "The five waves",
+      "wave": "Wave",
+      "perspective": "Explore a perspective",
+      "both": "Both perspectives",
+      "aarna": "Aarna",
+      "mukund": "Mukund",
+      "previous": "Previous wave",
+      "next": "Next wave",
+      "skip": "Skip to chapter",
+      "credit": "A story by Rajesh Kodaganti",
+      "error": "This chapter could not be displayed. Reload the page or choose another wave."
+    }
+  }
+]
